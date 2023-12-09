@@ -418,81 +418,77 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Kepadatan Agraris (jiwa/Ha):</label>
-                  <input type="text" name="kepadan_agraris" class="form-control" placeholder="isi angko se, misalnyo 100, 200, dsb.">
+                  <input type="text" name="kepadatan_agraris" class="form-control" placeholder="isi angko se, misalnyo 100, 200, dsb.">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label>Mayoritas mata pencaharian penduduk:</label>
-                  <input type="text" name="name" class="form-control" placeholder="misal: petani, pedagang, dll..">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>Kepadatan Agraris (jiwa/Ha):</label>
-                  <input type="text" name="name" class="form-control" placeholder="isi angko se, misalnyo 100, 200, dsb.">
+                  <input type="text" name="mayoritas_mata_pencaharian" class="form-control" placeholder="misal: petani, pedagang, dll..">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Jaringan jalan:</label>
-                  <select class="form-control">
-                    <option>Ada</option>
-                    <option>Tidak</option>
+                  <select class="form-control" name="jaringan_jalan">
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
                   </select>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Jaringan listrik:</label>
-                  <select class="form-control">
-                    <option>Ada</option>
-                    <option>Tidak</option>
+                  <select class="form-control" name="jaringan_listrik">
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
                   </select>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Jaringan air minum:</label>
-                  <select class="form-control">
-                    <option>Ada</option>
-                    <option>Tidak</option>
+                  <select class="form-control" name="air_minum">
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
                   </select>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Saluran air/drainase:</label>
-                  <select class="form-control">
-                    <option>Ada</option>
-                    <option>Tidak</option>
+                  <select class="form-control" name="saluran_drainase">
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
                   </select>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Saluran pipa minyak:</label>
-                  <select class="form-control">
-                    <option>Tidak</option>
-                    <option>Ada</option>
+                  <select class="form-control" name="pipa_minyak">
+                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Ada">Ada</option>
                   </select>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Saluran gas:</label>
-                  <select class="form-control">
-                    <option>Tidak</option>
-                    <option>Ada</option>
+                  <select class="form-control" name="gas">
+                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Ada">Ada</option>
                   </select>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Longsor:</label>
-                  <input type="text" class="form-control" name="email" value="-">
+                  <input type="text" class="form-control" name="longsor" value="-">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Banjir rob:</label>
-                  <input type="text" name="name" class="form-control" value="-">
+                  <input type="text" name="banjir_rob" class="form-control" value="-">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Banjir:</label>
-                  <input type="text" class="form-control" name="email" value="-">
+                  <input type="text" class="form-control" name="banjir" value="-">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Risiko bencana lainnya:</label>
@@ -502,87 +498,87 @@
               <div class="row">
                 <div class="col-md-12 form-group mt-3 mt-md-0">
                   <label>Keterangan lain yang dianggap perlu (lokasi tanah yang dimohon):</label>
-                  <textarea class="form-control">-</textarea>
+                  <textarea class="form-control" name="bencana_lainnya">-</textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Utara (penggunaan tanah):</label>
-                  <input type="text" class="form-control" name="email" placeholder="untuk pelaku usaha..">
+                  <input type="text" class="form-control" name="utara" placeholder="untuk pelaku usaha..">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Timur (penggunaan tanah):</label>
-                  <input type="text" name="name" class="form-control" placeholder="Klasifikasi Baku Lapangan Usaha Indonesia">
+                  <input type="text" name="timur" class="form-control" placeholder="Klasifikasi Baku Lapangan Usaha Indonesia">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Selatan (penggunaan tanah):</label>
-                  <input type="text" class="form-control" name="email" placeholder="untuk pelaku usaha..">
+                  <input type="text" class="form-control" name="selatan" placeholder="untuk pelaku usaha..">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Barat (penggunaan tanah):</label>
-                  <input type="text" name="name" class="form-control" placeholder="Klasifikasi Baku Lapangan Usaha Indonesia">
+                  <input type="text" name="barat" class="form-control" placeholder="Klasifikasi Baku Lapangan Usaha Indonesia">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <label>Jarak ke jalan penghubung:</label>
-                  <input type="text" class="form-control" name="email" placeholder="">
+                  <label>Jarak ke jalan penghubung: ±</label>
+                  <input type="text" class="form-control" name="jarak_jalan_penghubung" placeholder="misal ± 500 meter dll">
                 </div>
                 <div class="col-md-6 form-group">
-                  <label>Jarak ke jalan arteri utama:</label>
-                  <input type="text" name="name" class="form-control" placeholder="Klasifikasi Baku Lapangan Usaha Indonesia">
+                  <label>Jarak ke jalan arteri utama: ±</label>
+                  <input type="text" name="name" class="form-control" placeholder="misal ± 1,2 km dll">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Gambaran umum penguasaan tanah sekitar:</label>
-                  <textarea class="form-control" placeholder=".."></textarea>
+                  <textarea class="form-control" placeholder=".." name="penguasaan_tanah_sekitar"></textarea>
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Infrastruktur yang berkaitan dengan kegiatan pemohon:</label>
-                  <textarea class="form-control" placeholder=".."></textarea>
+                  <textarea class="form-control" placeholder=".." name="infrastruktur_berkaitan"></textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Jaringan jalan, listrik, air, saluran, dll:</label>
-                  <textarea class="form-control" placeholder=".."></textarea>
+                  <textarea class="form-control" placeholder=".." name="jaringan_lainnya"></textarea>
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Keterangan lain yang dianggap perlu (sekitar lokasi):</label>
-                  <textarea class="form-control" placeholder=".."></textarea>
+                  <textarea class="form-control" placeholder=".." name="keterangan_lain_sekitar"></textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Rencana penggunaan tanah:</label>
-                  <input type="text" class="form-control" name="email" placeholder="..">
+                  <input type="text" class="form-control" name="rencana_penggunaan tanah" placeholder="contoh: pabrik kelapa sawit, rumah tempat tinggal">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>alamat lokasi yg dimohon (nama jalan/rt/rw/jorong):</label>
-                  <input type="text" name="name" class="form-control" placeholder="...">
+                  <input type="text" name="alamat_lokasi" class="form-control" placeholder="...">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>NIB (Nomor Induk Berusaha):</label>
-                  <input type="text" class="form-control" name="email" placeholder="untuk pelaku usaha..">
+                  <input type="text" class="form-control" name="nib" placeholder="untuk pelaku usaha..">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Kode dan nama KBLI:</label>
-                  <input type="text" name="name" class="form-control" placeholder="Klasifikasi Baku Lapangan Usaha Indonesia">
+                  <input type="text" name="kbli" class="form-control" placeholder="Klasifikasi Baku Lapangan Usaha Indonesia">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>No. Berita Acara Pemeriksaan Lapang:</label>
-                  <input type="text" class="form-control" name="email" placeholder="..">
+                  <input type="text" class="form-control" name="no_ba_lapang" placeholder="..">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Tanggal Berita Acara Pemeriksaan Lapang:</label>
-                  <input type="text" name="name" class="form-control" placeholder="...">
+                  <input type="text" name="tanggal_ba_lapang" class="form-control" placeholder="...">
                 </div>
               </div>
               <div class="row">
@@ -603,11 +599,11 @@
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>No. Surat Tugas Pengolahan Data:</label>
-                  <input type="text" class="form-control" name="email" placeholder="..">
+                  <input type="text" class="form-control" name="no_st_pengolahan_data" placeholder="..">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Tanggal Surat Tugas Pengolahan Data:</label>
-                  <input type="text" name="name" class="form-control" placeholder="...">
+                  <input type="text" name="tanggal_st_pengolahan_data" class="form-control" placeholder="...">
                 </div>
               </div>
               <div class="row">
@@ -622,11 +618,11 @@
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>No. Risalah:</label>
-                  <input type="text" class="form-control" name="email" placeholder="..">
+                  <input type="text" class="form-control" name="no_risalah" placeholder="..">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Tanggal Risalah:</label>
-                  <input type="text" name="name" class="form-control" placeholder="...">
+                  <input type="text" name="tanggal_risalah" class="form-control" placeholder="...">
                 </div>
               </div>
               <div class="row">
@@ -645,11 +641,11 @@
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>No. Surat Keluar untuk Pertek:</label>
-                  <input type="text" class="form-control" name="email" placeholder="..">
+                  <input type="text" class="form-control" name="no_surat_pertek" placeholder="..">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Tanggal Surat:</label>
-                  <input type="text" name="name" class="form-control" placeholder="...">
+                  <input type="text" name="tanggal_surat_pertek" class="form-control" placeholder="...">
                 </div>
               </div>
               <div class="row">
