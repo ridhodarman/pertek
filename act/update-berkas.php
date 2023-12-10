@@ -257,7 +257,7 @@ try {
 				$id
 			);
 	if ($sql->execute()) {
-		echo "data berhasil di update<br/>Print...";
+		//echo "data berhasil di update<br/>Print...";
 	}
 } catch (exception $e) {
 	echo "<b>gagal di proses, kendalayo:</b><br/>".mysqli_error($koneksi);	

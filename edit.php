@@ -204,7 +204,7 @@
 
           <div class="col-lg-12 mt-5 mt-lg-0" data-aos="fade-left">
 
-            <form action="act/update-berkas.php" method="post" role="form" class="php-email-form">
+            <form action="act/cetak.php" method="post" role="form" class="php-email-form">
               <input type="hidden" name="id" value="<?php echo base64_encode($id) ?>">
               <div class="row">
                 <div class="col-md-2 form-group">
@@ -293,13 +293,13 @@
               <div class="row">
                 <div style="padding-top: 15px;"></div>
                 <!-- <div style="padding-top: 5px;"></div> -->
-                <button name="und-rapat" type="kirim" class="btn btn-secondary btn-lg btn-block btn-sm">
+                <button name="rapat-persiapan-und" type="kirim" class="btn btn-secondary btn-lg btn-block btn-sm">
                   <i class="fa fa-save"></i>
                   Print Surat Undangan Rapat Persiapan
                   <i class="fa fa-print"></i>
                 </button>
                 <div style="padding-bottom: 15px;"></div>
-                <button name="dh-rapat" type="kirim" class="btn btn-secondary btn-lg btn-block btn-sm">
+                <button name="rapat-persiapan-dh" type="kirim" class="btn btn-secondary btn-lg btn-block btn-sm">
                   <i class="fa fa-save"></i>
                   Print Daftar Hadir Rapat Persiapan
                   <i class="fa fa-print"></i>
@@ -318,7 +318,7 @@
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">
+                <button name="rapat-persiapan-notulen" type="kirim" class="btn btn-secondary btn-lg btn-block btn-sm">
                   <i class="fa fa-save"></i>
                   Print Notulensi Rapat Persiapan
                   <i class="fa fa-print"></i>
@@ -347,7 +347,7 @@
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">
+                <button name="peninjauan-lapang-st" type="kirim" class="btn btn-secondary btn-lg btn-block btn-sm">
                   <i class="fa fa-save"></i>
                   Print Surat Tugas Lapang
                   <i class="fa fa-print"></i>
@@ -362,8 +362,7 @@
                         echo $koordinat_lokasi;
                       }
                       else {echo "-";}
-                    ?>
-                  </textarea>
+                    ?></textarea>
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Arahan Fungsi Kawasan:</label>
@@ -372,8 +371,7 @@
                         echo $kawasan_rtrw;
                       }
                       else {echo "-";}
-                    ?>
-                  </textarea>
+                    ?></textarea>
                 </div>
               </div>
               <div class="row">
@@ -744,8 +742,7 @@
                         echo $keterangan_lain_lokasi;
                       }
                       else {echo "-";}
-                    ?>
-                  </textarea>
+                    ?></textarea>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Penggunaan tanah disekitar lokasi:</label>
@@ -754,8 +751,7 @@
                         echo $penggunaan_tanah_sekitar;
                       }
                       else {echo "-";}
-                    ?>
-                  </textarea>
+                    ?></textarea>
                 </div>
               </div>
               <div class="row">
@@ -796,8 +792,7 @@
                         echo $penguasaan_tanah_sekitar;
                       }
                       else {echo "-";}
-                    ?>
-                  </textarea>
+                    ?></textarea>
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Infrastruktur yang berkaitan dengan kegiatan pemohon:</label>
@@ -806,8 +801,7 @@
                         echo $infrastruktur_berkaitan;
                       }
                       else {echo "-";}
-                    ?>
-                  </textarea>
+                    ?></textarea>
                 </div>
               </div>
               <div class="row">
@@ -818,8 +812,7 @@
                         echo $jaringan_lainnya;
                       }
                       else {echo "-";}
-                    ?>
-                  </textarea>
+                    ?></textarea>
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Keterangan lain yang dianggap perlu (sekitar lokasi):</label>
@@ -828,8 +821,7 @@
                         echo $keterangan_lain_sekitar;
                       }
                       else {echo "-";}
-                    ?>
-                  </textarea>
+                    ?></textarea>
                 </div>
               </div>
               <div class="row">
@@ -854,7 +846,7 @@
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">
+                <button type="kirim" name="peninjauan-lapang-ba" class="btn btn-secondary btn-lg btn-block btn-sm">
                   <i class="fa fa-save"></i>
                   Print Berita Acara Pemeriksaan Lapang
                   <i class="fa fa-print"></i>
@@ -879,11 +871,11 @@
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Surat Tugas Pengolahan Data</button>
+                <button type="kirim" name="pengolahan-data-st" class="btn btn-secondary btn-lg btn-block btn-sm">Print Surat Tugas Pengolahan Data</button>
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Berita Acara Rapat Pengolahan Data</button>
+                <button type="kirim" name="pengolahan-data-ba" class="btn btn-secondary btn-lg btn-block btn-sm">Print Berita Acara Rapat Pengolahan Data</button>
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Daftar Hadir Rapat Pengolahan Data</button>
+                <button type="kirim" name="pengolahan-data-dh" class="btn btn-secondary btn-lg btn-block btn-sm">Daftar Hadir Rapat Pengolahan Data</button>
                 <div style="padding-bottom: 15px;"></div>
               </div>
               <div class="row">

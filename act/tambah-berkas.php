@@ -24,7 +24,7 @@ if (isset($_POST['baru'])) {
 
 		if ($sql->execute()) {
 	    	//echo "<script>alert('Data Berhasil Disimpan');location='index.php';</script>";
-	    	echo "<script>alert('Data Berhasil Disimpan');</script>";
+	    	echo "<script>alert('Data Berhasil Disimpan');location='../';</script>";
 
 	    	//$query = "SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'berkas'";
 	    	$query = "SELECT max(id) FROM berkas";
