@@ -44,14 +44,14 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html">Seksi 3</a></h1>
+        <h1 class="text-light"><a href="index.php">Seksi 3</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="about.html">About</a></li>
@@ -152,6 +152,8 @@
       $bencana_lainnya = $row['bencana_lainnya'];
       $keterangan_lain_lokasi = $row['keterangan_lain_lokasi'];
       $penggunaan_tanah_sekitar = $row['penggunaan_tanah_sekitar'];
+      $keserasian = $row['keserasian'];
+      $kesesuaian_karakteristik_tanah = $row['kesesuaian_karakteristik_tanah'];
       $utara = $row['utara'];
       $timur = $row['timur'];
       $selatan = $row['selatan'];
@@ -168,6 +170,8 @@
       $tanggal_ba_lapang = $row['tanggal_ba_lapang'];
       $no_st_pengolahan_data = $row['no_st_pengolahan_data'];
       $tanggal_st_pengolahan_data = $row['tanggal_st_pengolahan_data'];
+      $no_ba_pengolahan_data = $row['no_ba_pengolahan_data'];
+      $tanggal_ba_pengolahan_data = $row['tanggal_ba_pengolahan_data'];
       $no_ba_rapat_pembahasan = $row['no_ba_rapat_pembahasan'];
       $tanggal_rapat_pembahasan = $row['tanggal_rapat_pembahasan'];
       $luas_sesuai = $row['luas_sesuai'];
@@ -196,7 +200,7 @@
       </div>
       <div class="container">
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li>Input Data</li>
         </ol>
       </div>
@@ -782,11 +786,11 @@
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <label>Jarak ke jalan penghubung: ±</label>
+                  <label>Jarak ke jalan penghubung: </label>
                   <input type="text" class="form-control" name="jarak_jalan_penghubung" placeholder="misal ± 500 meter dll" value="<?php echo $jarak_jalan_penghubung ?>">
                 </div>
                 <div class="col-md-6 form-group">
-                  <label>Jarak ke jalan arteri utama: ±</label>
+                  <label>Jarak ke jalan arteri utama: </label>
                   <input type="text" name="jarak_jalan_arteri" class="form-control" placeholder="misal ± 1,2 km dll" value="<?php echo $jarak_jalan_arteri ?>">
                 </div>
               </div>
@@ -801,7 +805,7 @@
                     ?></textarea>
                 </div>
                 <div class="col-md-6 form-group">
-                  <label>Infrastruktur yang berkaitan dengan kegiatan pemohon:</label>
+                  <label>Infrastruktur yang berkaitan dengan kegiatan pemohon ±:</label>
                   <textarea class="form-control" placeholder=".." name="infrastruktur_berkaitan"><?php
                       if (!empty($infrastruktur_berkaitan)) {
                         echo $infrastruktur_berkaitan;
@@ -812,7 +816,7 @@
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <label>Jaringan jalan, listrik, air, saluran, dll:</label>
+                  <label>Jaringan jalan, listrik, air, saluran, dll ±:</label>
                   <textarea class="form-control" placeholder=".." name="jaringan_lainnya"><?php
                       if (!empty($jaringan_lainnya)) {
                         echo $jaringan_lainnya;
@@ -866,13 +870,18 @@
                 <div style="padding-bottom: 15px;"></div>
               </div>
               <div class="row">
-                <div class="col-md-6 form-group mt-3 mt-md-0">
+                <div class="col-md-4 form-group mt-3 mt-md-0">
                   <label>No. Surat Tugas Pengolahan Data:</label>
                   <input type="text" class="form-control" name="no_st_pengolahan_data" placeholder=".." value="<?php echo $no_st_pengolahan_data ?>">
                 </div>
-                <div class="col-md-6 form-group">
+                <div class="col-md-4 form-group">
                   <label>Tanggal Surat Tugas Pengolahan Data:</label>
                   <input type="date" name="tanggal_st_pengolahan_data" class="form-control" value="<?php echo $tanggal_st_pengolahan_data ?>">
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <label>No. BA Pengolahan Data:</label>
+                  <input type="text" class="form-control" name="no_ba_pengolahan_data" placeholder=".." value="<?php echo $no_ba_pengolahan_data ?>">
+                  <input type="hidden" name="tanggal_ba_pengolahan_data " class="form-control" value="<?php echo $tanggal_ba_pengolahan_data ?>">
                 </div>
               </div>
               <div class="row">
@@ -892,6 +901,18 @@
                 <div class="col-md-6 form-group">
                   <label>Tanggal Rapat Pembahasan:</label>
                   <input type="date" name="tanggal_rapat_pembahasan" class="form-control" value="<?php echo $tanggal_rapat_pembahasan ?>">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <label>Keserasian dengan lingkungan sekitar:</label>
+                  <input type="text" class="form-control" name="keserasian" value='<?php
+                  if (!empty($keserasian)) {echo $keserasian;}else {echo "-";}?>'>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>Kesesuaian karakteristik tanah (Sesuai/Cukup Sesuai/Tidak Sesuai)</label>
+                  <input type="text" name="kesesuaian_karakteristik_tanah" class="form-control" value='<?php
+                  if (!empty($kesesuaian_karakteristik_tanah)) {echo $kesesuaian_karakteristik_tanah;}else {echo "-";}?>'>
                 </div>
               </div>
               <div class="row">

@@ -43,14 +43,14 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html">Seksi 3</a></h1>
+        <h1 class="text-light"><a href="index.php">Seksi 3</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a class="active" href="index.php">Home</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="about.html">About</a></li>
@@ -216,24 +216,24 @@
         <div class="row">
           <div class="col-md-6">
             <div class="icon-box" data-aos="fade-up">
-              <div class="icon"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <div class="icon"><i class="bi bi-card-checklist" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a target="_blank" href="https://agamkab.bps.go.id/statictable/2015/06/04/11/tinggi-ibu-kecamatan-diatas-permukaan-laut.html">Ketinggian</a></h4>
+              <p class="description">Tinggi Ibu Kecamatan  diatas Permukaan Laut berdasarkan data Badan Pusat Statistik</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="icon-box" data-aos="fade-up">
-              <div class="icon"><i class="bi bi-book" style="color: #e9bf06;"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <div class="icon"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a target="_blank" href="https://dukcapil.agamkab.go.id/penduduk/agregat">Jumlah Penduduk</a></h4>
+              <p class="description">Jumlah Penduduk Kabupaten Agam berdasarkan data Dinas Kependudukan Dan Pencatatan Sipil Kabupaten Agam</p>
             </div>
           </div>
 
           <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-card-checklist" style="color: #3fcdc7;"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              <div class="icon"><i class="bi bi-globe" style="color: #d6ff22;"></i></div>
+              <h4 class="title"><a target="_blank" href="https://agamkab.bps.go.id/indicator/153/33/1/luas-wilayah.html">Luas Wilayah</a></h4>
+              <p class="description">Luas Wilayah (Km2) Kabupaten Agam berdasarkan data Badan Pusat Statistik</p>
             </div>
           </div>
           <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
@@ -246,7 +246,7 @@
 
           <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-globe" style="color: #d6ff22;"></i></div>
+              <div class="icon"><i class="bi bi-book" style="color: #e9bf06;"></i></div>
               <h4 class="title"><a href="">Nemo Enim</a></h4>
               <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
             </div>

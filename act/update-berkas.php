@@ -62,6 +62,8 @@ try {
 	$bencana_lainnya = $_POST['bencana_lainnya'];
 	$keterangan_lain_lokasi = $_POST['keterangan_lain_lokasi'];
 	$penggunaan_tanah_sekitar = $_POST['penggunaan_tanah_sekitar'];
+	$keserasian = $_POST['keserasian'];
+	$kesesuaian_karakteristik_tanah = $_POST['kesesuaian_karakteristik_tanah'];
 	$utara = $_POST['utara'];
 	$timur = $_POST['timur'];
 	$selatan = $_POST['selatan'];
@@ -78,6 +80,8 @@ try {
 	$tanggal_ba_lapang = $_POST['tanggal_ba_lapang'];
 	$no_st_pengolahan_data = $_POST['no_st_pengolahan_data'];
 	$tanggal_st_pengolahan_data = $_POST['tanggal_st_pengolahan_data'];
+	$no_ba_pengolahan_data = $_POST['no_ba_pengolahan_data'];
+	$tanggal_ba_pengolahan_data = $_POST['tanggal_st_pengolahan_data'];
 	$luas_sesuai = $_POST['luas_sesuai'];
 	$luas_tidak_sesuai = $_POST['luas_tidak_sesuai'];
 	$luas_bersyarat = $_POST['luas_bersyarat'];
@@ -152,6 +156,8 @@ try {
 				bencana_lainnya=?,
 				keterangan_lain_lokasi=?,
 				penggunaan_tanah_sekitar=?,
+				keserasian=?,
+				kesesuaian_karakteristik_tanah=?,
 				utara=?,
 				timur=?,
 				selatan=?,
@@ -168,6 +174,8 @@ try {
 				tanggal_ba_lapang=?,
 				no_st_pengolahan_data=?,
 				tanggal_st_pengolahan_data=?,
+				no_ba_pengolahan_data=?,
+				tanggal_ba_pengolahan_data=?,
 				no_ba_rapat_pembahasan=?,
 				tanggal_rapat_pembahasan=?,
 				luas_sesuai=?,
@@ -183,7 +191,7 @@ try {
 				WHERE id=?";
 			$sql = $koneksi->prepare($query);
 			$sql->bind_param(
-				"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+				"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 				$no_berkas,
 				$tahun,
 				$jenis_pertek,
@@ -244,6 +252,8 @@ try {
 				$bencana_lainnya,
 				$keterangan_lain_lokasi,
 				$penggunaan_tanah_sekitar,
+				$keserasian,
+				$kesesuaian_karakteristik_tanah,
 				$utara,
 				$timur,
 				$selatan,
@@ -260,6 +270,8 @@ try {
 				$tanggal_ba_lapang,
 				$no_st_pengolahan_data,
 				$tanggal_st_pengolahan_data,
+				$no_ba_pengolahan_data,
+				$tanggal_ba_pengolahan_data,
 				$no_ba_rapat_pembahasan,
 				$tanggal_rapat_pembahasan,
 				$luas_sesuai,
