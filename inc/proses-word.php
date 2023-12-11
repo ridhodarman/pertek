@@ -15,11 +15,32 @@ function tgl_indo($tanggal){
 		'November',
 		'Desember'
 	);
-	$pecahkan = explode('-', $tanggal);
-	// variabel pecahkan 0 = tanggal
-	// variabel pecahkan 1 = bulan
-	// variabel pecahkan 2 = tahun
-	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+	try{
+		$pecahkan = explode('-', $tanggal);
+		// variabel pecahkan 0 = tanggal
+		// variabel pecahkan 1 = bulan
+		// variabel pecahkan 2 = tahun
+	//die(var_dump($pecahkan));
+		//die($pecahkan[1]);
+		//$b=(int)$pecahkan[1];
+		if (isset($pecahkan[1])) {
+		//if (null) {
+			$b=$pecahkan[1];
+			$b2=intval($b);
+			$b3=$bulan[$b2];
+			$hasil=$pecahkan[2].' '.$b3. ' ' . $pecahkan[0];
+			return $hasil;
+		}
+		else{
+			$t = date("d-m-Y",strtotime($tanggal));
+			return str_replace("-"," ",$t);
+			//return "... ... ...";
+		}
+		
+	}
+	catch (exception $e) {
+		return "... ... ...";
+	}
 }
  
 
@@ -63,11 +84,13 @@ function penyebut($nilai) {
 $tanggal_rapat_persiapan =tgl_indo($tanggal_rapat_persiapan ); // 1 Januari 1900
 $hari_rapat_persiapan =nama_hari($tanggal_rapat_persiapan ); 
 $document = str_replace("#hari_rapat_persiapan", $hari_rapat_persiapan, $document);
+
 $tanggal_stpl =tgl_indo($tanggal_stpl);
 $tanggal_peninjauan = date("d-m-Y",strtotime($tanggal_peninjauan));
 $sampai_peninjauan = date("d-m-Y",strtotime($sampai_peninjauan));
-$hari_stpl =nama_hari($tanggal_stpl ); 
-$document = str_replace("#hari_stpl", $hari_stpl, $document);
+$hari_peninjauan =nama_hari($tanggal_peninjauan ); 
+$document = str_replace("#hari_peninjauan", $hari_peninjauan, $document);
+//$document = str_replace("#tanggal_peninjauan", $tanggal_peninjauan, $document);
 
 $tanggal_ba_lapang2 =tgl_indo($tanggal_ba_lapang );
 $document = str_replace("#tanggal_ba_peninjauan", $tanggal_ba_lapang2, $document);
@@ -104,6 +127,28 @@ $document = str_replace("#thn_pengolahan_data", $thn_pengolahan_data, $document)
 $tgl_pengolahan_data = date("d",strtotime($tanggal_st_pengolahan_data));
 $tgl_pengolahan_data = ucwords(trim(penyebut($tgl_pengolahan_data)));
 $document = str_replace("#tgl_pengolahan_data", $tgl_pengolahan_data, $document);
+
+
+$ttanggal_rapat_pembahasan =tgl_indo($tanggal_rapat_pembahasan );
+$document = str_replace("#ttanggal_rapat_pembahasan", $ttanggal_rapat_pembahasan, $document);
+$hari_rapat_pembahasan = nama_hari($tanggal_rapat_pembahasan);
+$document = str_replace("#hari_rapat_pembahasan", $hari_rapat_pembahasan, $document);
+
+$tgl_rapat_pembahasan = date("d",strtotime($tanggal_rapat_pembahasan));
+$tgl_rapat_pembahasan = ucwords(trim(penyebut($tgl_rapat_pembahasan)));
+$document = str_replace("#tgl_rapat_pembahasan", $tgl_rapat_pembahasan, $document);
+
+$thn_rapat_pembahasan = date("Y",strtotime($tanggal_rapat_pembahasan));
+$thn_rapat_pembahasan = ucwords(trim(penyebut($thn_rapat_pembahasan)));
+$document = str_replace("#thn_rapat_pembahasan", $thn_rapat_pembahasan, $document);
+
+$data = explode(" " , $ttanggal_rapat_pembahasan);
+$bulan_rapat_pembahasan = $data[1];
+$document = str_replace("#bulan_rapat_pembahasan", $bulan_rapat_pembahasan, $document);
+
+
+$tanggal_risalah =tgl_indo($tanggal_risalah );
+$tanggal_surat_pertek =tgl_indo($tanggal_surat_pertek );
 
 $document = str_replace("#no_berkas", $no_berkas, $document);
 $document = str_replace("#tahun", $tahun, $document);
@@ -182,6 +227,12 @@ $document = str_replace("#tanggal_ba_lapang", $tanggal_ba_lapang, $document);
 $document = str_replace("#no_st_pengolahan_data", $no_st_pengolahan_data, $document);
 $document = str_replace("#tanggal_st_pengolahan_data", $tanggal_st_pengolahan_data, $document);
 $document = str_replace("#no_ba_rapat_pembahasan", $no_ba_rapat_pembahasan, $document);
+$document = str_replace("@luas_sesuai", $luas_sesuai, $document);
+$document = str_replace("^luas_tidak_sesuai", $luas_tidak_sesuai, $document);
+$document = str_replace("*luas_bersyarat", $luas_bersyarat, $document);
+$document = str_replace("#uraian_sesuai", $uraian_sesuai, $document);
+$document = str_replace("#alasan_bersyarat", $alasan_bersyarat, $document);
+$document = str_replace("#alasan_tidak_sesuai", $alasan_tidak_sesuai, $document);
 $document = str_replace("#tanggal_rapat_pembahasan", $tanggal_rapat_pembahasan, $document);
 $document = str_replace("#no_risalah", $no_risalah, $document);
 $document = str_replace("#tanggal_risalah", $tanggal_risalah, $document);

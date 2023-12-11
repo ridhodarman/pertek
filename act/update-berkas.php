@@ -78,12 +78,18 @@ try {
 	$tanggal_ba_lapang = $_POST['tanggal_ba_lapang'];
 	$no_st_pengolahan_data = $_POST['no_st_pengolahan_data'];
 	$tanggal_st_pengolahan_data = $_POST['tanggal_st_pengolahan_data'];
+	$luas_sesuai = $_POST['luas_sesuai'];
+	$luas_tidak_sesuai = $_POST['luas_tidak_sesuai'];
+	$luas_bersyarat = $_POST['luas_bersyarat'];
+	$uraian_sesuai = $_POST['uraian_sesuai'];
+	$alasan_bersyarat = $_POST['alasan_bersyarat'];
+	$alasan_tidak_sesuai = $_POST['alasan_tidak_sesuai'];
 	$no_ba_rapat_pembahasan = $_POST['no_ba_rapat_pembahasan'];
 	$tanggal_rapat_pembahasan = $_POST['tanggal_rapat_pembahasan'];
 	$no_risalah = $_POST['no_risalah'];
 	$tanggal_risalah = $_POST['tanggal_risalah'];
 	$no_surat_pertek = $_POST['no_surat_pertek'];
-	$tanggal_surat_pertek = $_POST['tanggal_surat_pertek'];		
+	$tanggal_surat_pertek = $_POST['tanggal_surat_pertek'];
 
 	$query = "UPDATE berkas SET 
 				no_berkas=?,
@@ -164,6 +170,12 @@ try {
 				tanggal_st_pengolahan_data=?,
 				no_ba_rapat_pembahasan=?,
 				tanggal_rapat_pembahasan=?,
+				luas_sesuai=?,
+				luas_tidak_sesuai=?,
+				luas_bersyarat=?,
+				uraian_sesuai=?,
+				alasan_tidak_sesuai=?,
+				alasan_bersyarat=?,
 				no_risalah=?,
 				tanggal_risalah=?,
 				no_surat_pertek=?,
@@ -171,7 +183,7 @@ try {
 				WHERE id=?";
 			$sql = $koneksi->prepare($query);
 			$sql->bind_param(
-				"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+				"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 				$no_berkas,
 				$tahun,
 				$jenis_pertek,
@@ -250,6 +262,12 @@ try {
 				$tanggal_st_pengolahan_data,
 				$no_ba_rapat_pembahasan,
 				$tanggal_rapat_pembahasan,
+				$luas_sesuai,
+				$luas_tidak_sesuai,
+				$luas_bersyarat,
+				$uraian_sesuai,
+				$alasan_tidak_sesuai,
+				$alasan_bersyarat,
 				$no_risalah,
 				$tanggal_risalah,
 				$no_surat_pertek,

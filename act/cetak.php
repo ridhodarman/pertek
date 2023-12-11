@@ -33,6 +33,21 @@ else if (isset($_POST['pengolahan-data-ba'])) {
 else if (isset($_POST['pengolahan-data-dh'])) {
     cetakberkas("pengolahan data-dh");
 }
+else if (isset($_POST['rapat-pembahasan-und'])) {
+    cetakberkas("rapat pembahasan-und");
+}
+else if (isset($_POST['rapat-pembahasan-dh'])) {
+    cetakberkas("rapat pembahasan-dh");
+}
+else if (isset($_POST['rapat-pembahasan-ba'])) {
+    cetakberkas("rapat pembahasan-ba");
+}
+else if (isset($_POST['risalah'])) {
+    cetakberkas("risalah");
+}
+else if (isset($_POST['surat-pertek'])) {
+    cetakberkas("surat pertek");
+}
 else {
 	header("location:../");
 }

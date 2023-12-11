@@ -170,6 +170,12 @@
       $tanggal_st_pengolahan_data = $row['tanggal_st_pengolahan_data'];
       $no_ba_rapat_pembahasan = $row['no_ba_rapat_pembahasan'];
       $tanggal_rapat_pembahasan = $row['tanggal_rapat_pembahasan'];
+      $luas_sesuai = $row['luas_sesuai'];
+      $luas_bersyarat = $row['luas_bersyarat'];
+      $luas_tidak_sesuai = $row['luas_tidak_sesuai'];
+      $uraian_sesuai = $row['uraian_sesuai'];
+      $alasan_bersyarat = $row['alasan_bersyarat'];
+      $alasan_tidak_sesuai = $row['alasan_tidak_sesuai'];
       $no_risalah = $row['no_risalah'];
       $tanggal_risalah = $row['tanggal_risalah'];
       $no_surat_pertek = $row['no_surat_pertek'];
@@ -889,12 +895,55 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <label>Luas Sesuai:</label>
+                  <input type="text" class="form-control" name="luas_sesuai" placeholder=".." value="<?php echo $luas_sesuai ?>">
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <label>Luas Tidak Sesuai:</label>
+                  <input type="text" class="form-control" name="luas_tidak_sesuai" placeholder=".." value="<?php echo $luas_tidak_sesuai ?>">
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <label>Luas Sesuai Bersyarat:</label>
+                  <input type="text" class="form-control" name="luas_bersyarat" placeholder=".." value="<?php echo $luas_bersyarat ?>">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group mt-3 mt-md-0">
+                  <label>Uraian Sesuai:</label>
+                  <textarea class="form-control" placeholder=".." name="uraian_sesuai"><?php
+                    if (!empty($jaringan_lainnya)) {
+                      echo $uraian_sesuai;
+                    }
+                    else {echo "-";}
+                  ?></textarea>
+                </div>
+                <div class="col-md-12 form-group mt-3 mt-md-0">
+                  <label>Alasan Tidak Sesuai:</label>
+                  <textarea class="form-control" placeholder=".." name="alasan_tidak_sesuai"><?php
+                    if (!empty($jaringan_lainnya)) {
+                      echo $alasan_tidak_sesuai;
+                    }
+                    else {echo "-";}
+                  ?></textarea>
+                </div>
+                <div class="col-md-12 form-group mt-3 mt-md-0">
+                  <label>Alasan Sesuai Bersyarat:</label>
+                  <textarea class="form-control" placeholder=".." name="alasan_bersyarat"><?php
+                    if (!empty($jaringan_lainnya)) {
+                      echo $alasan_bersyarat;
+                    }
+                    else {echo "-";}
+                  ?></textarea>
+                </div>
+              </div>
+              <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Undangan Rapat Pembahasan PTP</button>
+                <button type="kirim" name="rapat-pembahasan-und" class="btn btn-secondary btn-lg btn-block btn-sm">Print Undangan Rapat Pembahasan PTP</button>
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Berita Acara Rapat Pembahasan PTP</button>
+                <button type="kirim" name="rapat-pembahasan-ba" class="btn btn-secondary btn-lg btn-block btn-sm">Print Berita Acara Rapat Pembahasan PTP</button>
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Daftar Hadir Rapat Pembahasan PTP</button>
+                <button type="kirim" name="rapat-pembahasan-dh" class="btn btn-secondary btn-lg btn-block btn-sm">Print Daftar Hadir Rapat Pembahasan PTP</button>
                 <div style="padding-top: 5px;"></div>
                 <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Format Dokumentasi Rapat Pembahasan PTP</button>
                 <div style="padding-bottom: 15px;"></div>
@@ -911,7 +960,7 @@
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Risalah PTP</button>
+                <button type="kirim" name="risalah" class="btn btn-secondary btn-lg btn-block btn-sm">Print Risalah PTP</button>
                 <div style="padding-bottom: 15px;"></div>
               </div>
               <div class="row">
@@ -926,10 +975,10 @@
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Surat Keluar untuk Pertek</button>
+                <button type="kirim" name="surat-pertek" class="btn btn-secondary btn-lg btn-block btn-sm">Print Surat Keluar untuk Pertek</button>
                 <div style="padding-bottom: 15px;"></div>
               </div>
-              <div class="text-center"><button type="submit">Simpan Data Berkas</button></div>
+              <div class="text-center"><button type="submit">Kembali</button></div>
             </form>
 
           </div>
