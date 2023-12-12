@@ -48,6 +48,12 @@ else if (isset($_POST['risalah'])) {
 else if (isset($_POST['surat-pertek'])) {
     cetakberkas("surat pertek");
 }
+else if (isset($_POST['peninjauan-lapang-dokumentasi'])) {
+    cetakberkas("peninjauan lapang-dokumentasi");
+}
+else if (isset($_POST['rapat-pembahasan-dokumentasi'])) {
+    cetakberkas("rapat pembahasan-dokumentasi");
+}
 else {
 	header("location:../");
 }

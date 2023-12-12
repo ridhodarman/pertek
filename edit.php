@@ -14,7 +14,9 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -35,6 +37,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -219,11 +222,13 @@
               <div class="row">
                 <div class="col-md-2 form-group">
                   <label>Nomor Berkas:</label>
-                  <input type="text" name="no_berkas" class="form-control" placeholder="nomor berkasnyo" value="<?php echo $no_berkas ?>">
+                  <input type="text" name="no_berkas" class="form-control" placeholder="nomor berkasnyo"
+                    value="<?php echo $no_berkas ?>">
                 </div>
                 <div class="col-md-2 form-group mt-3 mt-md-0">
                   <label>Tahun:</label>
-                  <input type="text" class="form-control" name="tahun" placeholder="tahun berkasnyo" value="<?php echo $tahun ?>">
+                  <input type="text" class="form-control" name="tahun" placeholder="tahun berkasnyo"
+                    value="<?php echo $tahun ?>">
                 </div>
                 <div class="col-md-8 form-group mt-3 mt-md-0">
                   <label>Jenis Pertek:</label>
@@ -231,57 +236,69 @@
                     <?php
                       if (!empty($jenis_pertek)) {
                         ?>
-                        <option value="<?php echo $jenis_pertek ?>"><?php echo $jenis_pertek ?></option>
-                        <?php
+                    <option value="<?php echo $jenis_pertek ?>"><?php echo $jenis_pertek ?></option>
+                    <?php
                       }
                       else {
                         ?>
-                        <option value="" style="color: gray;">Pilih ciek.....</option>
-                        <?php
+                    <option value="" style="color: gray;">Pilih ciek.....</option>
+                    <?php
                       }
                     ?>
                     <option value="" style="color: gray;">Pilih ciek.....</option>
-                    <option value="Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang (PKKPR) Untuk Kegiatan Non Berusaha">PKKPR Untuk Kegiatan Non Berusaha</option>
-                    <option value="Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang (PKKPR) Untuk Kegiatan Berusaha">PKKPR Untuk Kegiatan Berusaha</option>
-                    <option value="Penyelenggaraan Kebijakan Penggunaan dan Pemanfaatan Tanah">Penyelenggaraan Kebijakan Penggunaan dan Pemanfaatan Tanah</option>
-                    <option value="PKKPR atau RKKPR Untuk Kegiatan Yang Bersifat Strategis Nasional">PKKPR atau RKKPR Untuk Kegiatan Yang Bersifat Strategis Nasional</option>
+                    <option
+                      value="Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang (PKKPR) Untuk Kegiatan Non Berusaha">
+                      PKKPR Untuk Kegiatan Non Berusaha</option>
+                    <option value="Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang (PKKPR) Untuk Kegiatan Berusaha">
+                      PKKPR Untuk Kegiatan Berusaha</option>
+                    <option value="Penyelenggaraan Kebijakan Penggunaan dan Pemanfaatan Tanah">Penyelenggaraan Kebijakan
+                      Penggunaan dan Pemanfaatan Tanah</option>
+                    <option value="PKKPR atau RKKPR Untuk Kegiatan Yang Bersifat Strategis Nasional">PKKPR atau RKKPR
+                      Untuk Kegiatan Yang Bersifat Strategis Nasional</option>
                   </select>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label>Nama Pemohon:</label>
-                  <input type="text" name="nama_pemohon" class="form-control" placeholder="namo pemohon" value="<?php echo $nama_pemohon ?>">
+                  <input type="text" name="nama_pemohon" class="form-control" placeholder="namo pemohon"
+                    value="<?php echo $nama_pemohon ?>">
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>NIK:</label>
-                  <input type="text" class="form-control" name="nik" placeholder="nik di KTP" value="<?php echo $nik ?>">
+                  <input type="text" class="form-control" name="nik" placeholder="nik di KTP"
+                    value="<?php echo $nik ?>">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label>Alamat:</label>
-                  <input type="text" name="alamat" class="form-control" placeholder="alamat pemohon" value="<?php echo $alamat ?>">
+                  <input type="text" name="alamat" class="form-control" placeholder="alamat pemohon"
+                    value="<?php echo $alamat ?>">
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Bertindak atas nama:</label>
-                  <input type="text" class="form-control" name="bertindak_atas_nama" value="<?php echo $bertindak_atas_nama ?>">
+                  <input type="text" class="form-control" name="bertindak_atas_nama"
+                    value="<?php echo $bertindak_atas_nama ?>">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label>Nagari:</label>
-                  <input type="text" name="desa_nagari" class="form-control" placeholder="lokasi tanah di nagari.." value="<?php echo $desa_nagari ?>">
+                  <input type="text" name="desa_nagari" class="form-control" placeholder="lokasi tanah di nagari.."
+                    value="<?php echo $desa_nagari ?>">
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Kecamatan:</label>
-                  <input type="text" class="form-control" name="kecamatan" placeholder="lokasi tanah di kecamatan.." value="<?php echo $kecamatan ?>">
+                  <input type="text" class="form-control" name="kecamatan" placeholder="lokasi tanah di kecamatan.."
+                    value="<?php echo $kecamatan ?>">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label>Alamat lokasi (jalan/jorong/RT):</label>
-                  <input type="text" name="alamat_lokasi" class="form-control" placeholder="lokasi tanah di nagari.." value="<?php echo $alamat_lokasi ?>">
+                  <input type="text" name="alamat_lokasi" class="form-control" placeholder="lokasi tanah di nagari.."
+                    value="<?php echo $alamat_lokasi ?>">
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Format (SK Pertek):</label>
@@ -293,11 +310,13 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label id="persiapan">Tanggal Rapat Persiapan:</label>
-                  <input type="date" name="tanggal_rapat_persiapan" class="form-control" id="name" value="<?php echo $tanggal_rapat_persiapan ?>">
+                  <input type="date" name="tanggal_rapat_persiapan" class="form-control" id="name"
+                    value="<?php echo $tanggal_rapat_persiapan ?>">
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Jam Rapat Persiapan (WIB):</label>
-                  <input type="text" class="form-control" name="jam_rapat_persiapan" placeholder="masukkan waktu mulai rapat, misal= 10:00" value="<?php echo $jam_rapat_persiapan ?>">
+                  <input type="text" class="form-control" name="jam_rapat_persiapan"
+                    placeholder="masukkan waktu mulai rapat, misal= 10:00" value="<?php echo $jam_rapat_persiapan ?>">
                 </div>
               </div>
               <div class="row">
@@ -319,11 +338,13 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label>Luas:</label>
-                  <input type="text" name="luas" class="form-control" placeholder="luas tanah yang dimohon.." value="<?php echo $luas ?>">
+                  <input type="text" name="luas" class="form-control" placeholder="luas tanah yang dimohon.."
+                    value="<?php echo $luas ?>">
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Tanggal Permohonan:</label>
-                  <input type="date" class="form-control" name="tanggal_permohonan" value="<?php echo $tanggal_permohonan ?>">
+                  <input type="date" class="form-control" name="tanggal_permohonan"
+                    value="<?php echo $tanggal_permohonan ?>">
                 </div>
               </div>
               <div class="row">
@@ -348,11 +369,13 @@
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Tanggal Peninjauan Lapang:</label>
-                  <input type="date" class="form-control" name="tanggal_peninjauan" value="<?php echo $tanggal_peninjauan ?>">
+                  <input type="date" class="form-control" name="tanggal_peninjauan"
+                    value="<?php echo $tanggal_peninjauan ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Peninjau Lapang sampai tanggal:</label>
-                  <input type="date" name="sampai_peninjauan" class="form-control" value="<?php echo $sampai_peninjauan ?>">
+                  <input type="date" name="sampai_peninjauan" class="form-control"
+                    value="<?php echo $sampai_peninjauan ?>">
                 </div>
               </div>
               <div class="row">
@@ -387,11 +410,13 @@
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Penggunaan Tanah Saat ini:</label>
-                  <input type="text" class="form-control" name="penggunaan_tanah" placeholder="penggunaan tanah saat ini" value="<?php echo $penggunaan_tanah ?>">
+                  <input type="text" class="form-control" name="penggunaan_tanah"
+                    placeholder="penggunaan tanah saat ini" value="<?php echo $penggunaan_tanah ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Status penguasaan/pemilikan:</label>
-                  <input type="text" name="penguasaan_tanah" class="form-control" placeholder="penguasaan/pemilikan tanah saat ini ?" value="<?php echo $penguasaan_tanah ?>">
+                  <input type="text" name="penguasaan_tanah" class="form-control"
+                    placeholder="penguasaan/pemilikan tanah saat ini ?" value="<?php echo $penguasaan_tanah ?>">
                 </div>
               </div>
               <div class="row">
@@ -401,8 +426,8 @@
                     <?php
                       if (!empty($indikasi_skp)) {
                         ?>
-                        <option value="<?php echo $indikasi_skp ?>"><?php echo $indikasi_skp ?></option>
-                        <?php
+                    <option value="<?php echo $indikasi_skp ?>"><?php echo $indikasi_skp ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Tidak Ada">Tidak Ada</option>
@@ -411,7 +436,8 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Lereng:</label>
-                  <input type="text" name="lereng" class="form-control" placeholder="misal: 0-3%, 3-8%, dst.." value="<?php echo $lereng ?>">
+                  <input type="text" name="lereng" class="form-control" placeholder="misal: 0-3%, 3-8%, dst.."
+                    value="<?php echo $lereng ?>">
                 </div>
               </div>
               <div class="row">
@@ -421,8 +447,8 @@
                     <?php
                       if (!empty($tekstur)) {
                         ?>
-                        <option value="<?php echo $tekstur ?>"><?php echo $tekstur ?></option>
-                        <?php
+                    <option value="<?php echo $tekstur ?>"><?php echo $tekstur ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Sedang">Sedang</option>
@@ -432,7 +458,8 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Kedalaman Efektif:</label>
-                  <input type="text" name="kedalaman_efektif" class="form-control" placeholder="misal: >90 , 1-30, dll" value="<?php echo $kedalaman_efektif ?>">
+                  <input type="text" name="kedalaman_efektif" class="form-control" placeholder="misal: >90 , 1-30, dll"
+                    value="<?php echo $kedalaman_efektif ?>">
                 </div>
               </div>
               <div class="row">
@@ -442,8 +469,8 @@
                     <?php
                       if (!empty($drainase)) {
                         ?>
-                        <option value="<?php echo $drainase ?>"><?php echo $drainase ?></option>
-                        <?php
+                    <option value="<?php echo $drainase ?>"><?php echo $drainase ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Tidak tergenang">Tidak tergenang</option>
@@ -457,8 +484,8 @@
                     <?php
                       if (!empty($erosi)) {
                         ?>
-                        <option value="<?php echo $erosi ?>"><?php echo $erosi ?></option>
-                        <?php
+                    <option value="<?php echo $erosi ?>"><?php echo $erosi ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Tidak ada erosi">Tidak ada erosi</option>
@@ -473,8 +500,8 @@
                     <?php
                       if (!empty($faktor_pembatas)) {
                         ?>
-                        <option value="<?php echo $faktor_pembatas ?>"><?php echo $faktor_pembatas ?></option>
-                        <?php
+                    <option value="<?php echo $faktor_pembatas ?>"><?php echo $faktor_pembatas ?></option>
+                    <?php
                       }
                     ?>
                     <option value="-">-</option>
@@ -484,7 +511,8 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Ketinggian (dalam satuan mdpl):</label>
-                  <input type="text" name="ketinggian" class="form-control" placeholder="isi angko se, misalnyo: 100, 200, dll" value="<?php echo $ketinggian ?>">
+                  <input type="text" name="ketinggian" class="form-control"
+                    placeholder="isi angko se, misalnyo: 100, 200, dll" value="<?php echo $ketinggian ?>">
                 </div>
               </div>
               <div class="row">
@@ -494,8 +522,8 @@
                     <?php
                       if (!empty($mata_air)) {
                         ?>
-                        <option value="<?php echo $mata_air ?>"><?php echo $mata_air ?></option>
-                        <?php
+                    <option value="<?php echo $mata_air ?>"><?php echo $mata_air ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Tidak Ada">Tidak Ada</option>
@@ -508,8 +536,9 @@
                     <?php
                       if (!empty($keberadaan_tanah_timbul)) {
                         ?>
-                        <option value="<?php echo $keberadaan_tanah_timbul ?>"><?php echo $keberadaan_tanah_timbul ?></option>
-                        <?php
+                    <option value="<?php echo $keberadaan_tanah_timbul ?>"><?php echo $keberadaan_tanah_timbul ?>
+                    </option>
+                    <?php
                       }
                     ?>
                     <option value="Tidak Ada">Tidak Ada</option>
@@ -524,8 +553,8 @@
                     <?php
                       if (!empty($pancang_diatas_air)) {
                         ?>
-                        <option value="<?php echo $pancang_diatas_air ?>"><?php echo $pancang_diatas_air ?></option>
-                        <?php
+                    <option value="<?php echo $pancang_diatas_air ?>"><?php echo $pancang_diatas_air ?></option>
+                    <?php
                       }
                     ?>
                     <option value="-">-</option>
@@ -541,8 +570,8 @@
                     <?php
                       if (!empty($terletak_dipulau_kecil)) {
                         ?>
-                        <option value="<?php echo $terletak_dipulau_kecil ?>"><?php echo $terletak_dipulau_kecil ?></option>
-                        <?php
+                    <option value="<?php echo $terletak_dipulau_kecil ?>"><?php echo $terletak_dipulau_kecil ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Tidak">Tidak</option>
@@ -601,33 +630,40 @@
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Jumlah penduduk:</label>
-                  <input type="text" class="form-control" name="jumlah_penduduk" placeholder="misal 123 KK atau 1.000 jiwa, dll" value="<?php echo $jumlah_penduduk ?>">
+                  <input type="text" class="form-control" name="jumlah_penduduk"
+                    placeholder="misal 123 KK atau 1.000 jiwa, dll" value="<?php echo $jumlah_penduduk ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Kepadatan penduduk (jiwa/km2):</label>
-                  <input type="text" name="kepadatan_penduduk" class="form-control" placeholder="isi angko se, misalnyo 1000, 2000, dsb." value="<?php echo $kepadatan_penduduk ?>">
+                  <input type="text" name="kepadatan_penduduk" class="form-control"
+                    placeholder="isi angko se, misalnyo 1000, 2000, dsb." value="<?php echo $kepadatan_penduduk ?>">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label>Rata-rata kepemilikan tanah (Ha/KK):</label>
-                  <input type="text" name="rerata_kepemilikan_tanah" class="form-control" placeholder="isi angko se, misalnyo 1, 2, 3 dst." value='<?php
+                  <input type="text" name="rerata_kepemilikan_tanah" class="form-control"
+                    placeholder="isi angko se, misalnyo 1, 2, 3 dst." value='<?php
                   if (!empty($rerata_kepemilikan_tanah)) {echo $rerata_kepemilikan_tanah;}else {echo "";}?>'>
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Kepadatan Agraris (jiwa/Ha):</label>
-                  <input type="text" name="kepadatan_agraris" class="form-control" placeholder="isi angko se, misalnyo 100, 200, dsb." value='<?php
+                  <input type="text" name="kepadatan_agraris" class="form-control"
+                    placeholder="isi angko se, misalnyo 100, 200, dsb." value='<?php
                   if (!empty($kepadatan_penduduk)) {echo $kepadatan_penduduk;}else {echo "";}?>'>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label>Mayoritas mata pencaharian penduduk:</label>
-                  <input type="text" name="mayoritas_mata_pencaharian" class="form-control" placeholder="misal: petani, pedagang, dll.." value="<?php echo $mayoritas_mata_pencaharian ?>">
+                  <input type="text" name="mayoritas_mata_pencaharian" class="form-control"
+                    placeholder="misal: petani, pedagang, dll.." value="<?php echo $mayoritas_mata_pencaharian ?>">
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Rencana penggunaan tanah:</label>
-                  <input type="text" class="form-control" name="rencana_penggunaan_tanah" placeholder="contoh: pabrik kelapa sawit, rumah tempat tinggal" value="<?php echo $rencana_penggunaan_tanah ?>">
+                  <input type="text" class="form-control" name="rencana_penggunaan_tanah"
+                    placeholder="contoh: pabrik kelapa sawit, rumah tempat tinggal"
+                    value="<?php echo $rencana_penggunaan_tanah ?>">
                 </div>
               </div>
               <div class="row">
@@ -637,8 +673,8 @@
                     <?php
                       if (!empty($jaringan_jalan)) {
                         ?>
-                        <option value="<?php echo $jaringan_jalan ?>"><?php echo $jaringan_jalan ?></option>
-                        <?php
+                    <option value="<?php echo $jaringan_jalan ?>"><?php echo $jaringan_jalan ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Ada">Ada</option>
@@ -651,8 +687,8 @@
                     <?php
                       if (!empty($jaringan_listrik)) {
                         ?>
-                        <option value="<?php echo $jaringan_listrik ?>"><?php echo $jaringan_listrik ?></option>
-                        <?php
+                    <option value="<?php echo $jaringan_listrik ?>"><?php echo $jaringan_listrik ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Ada">Ada</option>
@@ -667,8 +703,8 @@
                     <?php
                       if (!empty($air_minum)) {
                         ?>
-                        <option value="<?php echo $air_minum ?>"><?php echo $air_minum ?></option>
-                        <?php
+                    <option value="<?php echo $air_minum ?>"><?php echo $air_minum ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Ada">Ada</option>
@@ -681,8 +717,8 @@
                     <?php
                       if (!empty($saluran_drainase)) {
                         ?>
-                        <option value="<?php echo $saluran_drainase ?>"><?php echo $saluran_drainase ?></option>
-                        <?php
+                    <option value="<?php echo $saluran_drainase ?>"><?php echo $saluran_drainase ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Ada">Ada</option>
@@ -697,8 +733,8 @@
                     <?php
                       if (!empty($pipa_minyak)) {
                         ?>
-                        <option value="<?php echo $pipa_minyak ?>"><?php echo $pipa_minyak ?></option>
-                        <?php
+                    <option value="<?php echo $pipa_minyak ?>"><?php echo $pipa_minyak ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Tidak Ada">Tidak Ada</option>
@@ -711,8 +747,8 @@
                     <?php
                       if (!empty($gas)) {
                         ?>
-                        <option value="<?php echo $gas ?>"><?php echo $gas ?></option>
-                        <?php
+                    <option value="<?php echo $gas ?>"><?php echo $gas ?></option>
+                    <?php
                       }
                     ?>
                     <option value="Tidak Ada">Tidak Ada</option>
@@ -787,11 +823,13 @@
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Jarak ke jalan penghubung: </label>
-                  <input type="text" class="form-control" name="jarak_jalan_penghubung" placeholder="misal ± 500 meter dll" value="<?php echo $jarak_jalan_penghubung ?>">
+                  <input type="text" class="form-control" name="jarak_jalan_penghubung"
+                    placeholder="misal ± 500 meter dll" value="<?php echo $jarak_jalan_penghubung ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Jarak ke jalan arteri utama: </label>
-                  <input type="text" name="jarak_jalan_arteri" class="form-control" placeholder="misal ± 1,2 km dll" value="<?php echo $jarak_jalan_arteri ?>">
+                  <input type="text" name="jarak_jalan_arteri" class="form-control" placeholder="misal ± 1,2 km dll"
+                    value="<?php echo $jarak_jalan_arteri ?>">
                 </div>
               </div>
               <div class="row">
@@ -837,21 +875,25 @@
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>NIB (Nomor Induk Berusaha):</label>
-                  <input type="text" class="form-control" name="nib" placeholder="untuk pelaku usaha.." value="<?php echo $nib ?>">
+                  <input type="text" class="form-control" name="nib" placeholder="untuk pelaku usaha.."
+                    value="<?php echo $nib ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Kode dan nama KBLI:</label>
-                  <input type="text" name="kbli" class="form-control" placeholder="Klasifikasi Baku Lapangan Usaha Indonesia" value="<?php echo $kbli ?>">
+                  <input type="text" name="kbli" class="form-control"
+                    placeholder="Klasifikasi Baku Lapangan Usaha Indonesia" value="<?php echo $kbli ?>">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>No. Berita Acara Pemeriksaan Lapang:</label>
-                  <input type="text" class="form-control" name="no_ba_lapang" placeholder=".." value="<?php echo $no_ba_lapang ?>">
+                  <input type="text" class="form-control" name="no_ba_lapang" placeholder=".."
+                    value="<?php echo $no_ba_lapang ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Tanggal Berita Acara Pemeriksaan Lapang:</label>
-                  <input type="date" name="tanggal_ba_lapang" class="form-control" value="<?php echo $tanggal_ba_lapang ?>">
+                  <input type="date" name="tanggal_ba_lapang" class="form-control"
+                    value="<?php echo $tanggal_ba_lapang ?>">
                 </div>
               </div>
               <div class="row">
@@ -862,7 +904,8 @@
                   <i class="fa fa-print"></i>
                 </button>
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">
+                <button type="kirim" name="peninjauan-lapang-dokumentasi"
+                  class="btn btn-secondary btn-lg btn-block btn-sm">
                   <i class="fa fa-save"></i>
                   Print Format Dokumentasi Pemeriksaan Lapang
                   <i class="fa fa-print"></i>
@@ -872,35 +915,53 @@
               <div class="row">
                 <div class="col-md-4 form-group mt-3 mt-md-0">
                   <label>No. Surat Tugas Pengolahan Data:</label>
-                  <input type="text" class="form-control" name="no_st_pengolahan_data" placeholder=".." value="<?php echo $no_st_pengolahan_data ?>">
+                  <input type="text" class="form-control" name="no_st_pengolahan_data" placeholder=".."
+                    value="<?php echo $no_st_pengolahan_data ?>">
                 </div>
                 <div class="col-md-4 form-group">
                   <label>Tanggal Surat Tugas Pengolahan Data:</label>
-                  <input type="date" name="tanggal_st_pengolahan_data" class="form-control" value="<?php echo $tanggal_st_pengolahan_data ?>">
+                  <input type="date" name="tanggal_st_pengolahan_data" class="form-control"
+                    value="<?php echo $tanggal_st_pengolahan_data ?>">
                 </div>
                 <div class="col-md-4 form-group mt-3 mt-md-0">
                   <label>No. BA Pengolahan Data:</label>
-                  <input type="text" class="form-control" name="no_ba_pengolahan_data" placeholder=".." value="<?php echo $no_ba_pengolahan_data ?>">
-                  <input type="hidden" name="tanggal_ba_pengolahan_data " class="form-control" value="<?php echo $tanggal_ba_pengolahan_data ?>">
+                  <input type="text" class="form-control" name="no_ba_pengolahan_data" placeholder=".."
+                    value="<?php echo $no_ba_pengolahan_data ?>">
+                  <input type="hidden" name="tanggal_ba_pengolahan_data " class="form-control"
+                    value="<?php echo $tanggal_ba_pengolahan_data ?>">
                 </div>
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="kirim" name="pengolahan-data-st" class="btn btn-secondary btn-lg btn-block btn-sm">Print Surat Tugas Pengolahan Data</button>
+                <button type="kirim" name="pengolahan-data-st" class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>
+                  Print Surat Tugas Pengolahan Data
+                  <i class="fa fa-print"></i>
+                </button>
                 <div style="padding-top: 5px;"></div>
-                <button type="kirim" name="pengolahan-data-ba" class="btn btn-secondary btn-lg btn-block btn-sm">Print Berita Acara Rapat Pengolahan Data</button>
+                <button type="kirim" name="pengolahan-data-ba" class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>
+                  Print Berita Acara Rapat Pengolahan Data
+                  <i class="fa fa-print"></i>
+                </button>
                 <div style="padding-top: 5px;"></div>
-                <button type="kirim" name="pengolahan-data-dh" class="btn btn-secondary btn-lg btn-block btn-sm">Daftar Hadir Rapat Pengolahan Data</button>
+                <button type="kirim" name="pengolahan-data-dh" class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>
+                  Daftar Hadir Rapat Pengolahan Data
+                  <i class="fa fa-print"></i>
+                </button>
                 <div style="padding-bottom: 15px;"></div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>No. BA Rapat Pembahasan PTP:</label>
-                  <input type="text" class="form-control" name="no_ba_rapat_pembahasan" placeholder=".." value="<?php echo $no_ba_rapat_pembahasan ?>">
+                  <input type="text" class="form-control" name="no_ba_rapat_pembahasan" placeholder=".."
+                    value="<?php echo $no_ba_rapat_pembahasan ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Tanggal Rapat Pembahasan:</label>
-                  <input type="date" name="tanggal_rapat_pembahasan" class="form-control" value="<?php echo $tanggal_rapat_pembahasan ?>">
+                  <input type="date" name="tanggal_rapat_pembahasan" class="form-control"
+                    value="<?php echo $tanggal_rapat_pembahasan ?>">
                 </div>
               </div>
               <div class="row">
@@ -911,22 +972,26 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Kesesuaian karakteristik tanah (Sesuai/Cukup Sesuai/Tidak Sesuai)</label>
-                  <input type="text" name="kesesuaian_karakteristik_tanah" class="form-control" value='<?php
+                  <input type="text" name="kesesuaian_karakteristik_tanah" class="form-control"
+                    value='<?php
                   if (!empty($kesesuaian_karakteristik_tanah)) {echo $kesesuaian_karakteristik_tanah;}else {echo "-";}?>'>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4 form-group mt-3 mt-md-0">
                   <label>Luas Sesuai:</label>
-                  <input type="text" class="form-control" name="luas_sesuai" placeholder=".." value="<?php echo $luas_sesuai ?>">
+                  <input type="text" class="form-control" name="luas_sesuai" placeholder=".."
+                    value="<?php echo $luas_sesuai ?>">
                 </div>
                 <div class="col-md-4 form-group mt-3 mt-md-0">
                   <label>Luas Tidak Sesuai:</label>
-                  <input type="text" class="form-control" name="luas_tidak_sesuai" placeholder=".." value="<?php echo $luas_tidak_sesuai ?>">
+                  <input type="text" class="form-control" name="luas_tidak_sesuai" placeholder=".."
+                    value="<?php echo $luas_tidak_sesuai ?>">
                 </div>
                 <div class="col-md-4 form-group mt-3 mt-md-0">
                   <label>Luas Sesuai Bersyarat:</label>
-                  <input type="text" class="form-control" name="luas_bersyarat" placeholder=".." value="<?php echo $luas_bersyarat ?>">
+                  <input type="text" class="form-control" name="luas_bersyarat" placeholder=".."
+                    value="<?php echo $luas_bersyarat ?>">
                 </div>
               </div>
               <div class="row">
@@ -960,19 +1025,37 @@
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="kirim" name="rapat-pembahasan-und" class="btn btn-secondary btn-lg btn-block btn-sm">Print Undangan Rapat Pembahasan PTP</button>
+                <button type="kirim" name="rapat-pembahasan-und" class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>
+                  Print Undangan Rapat Pembahasan PTP
+                  <i class="fa fa-print"></i>
+                </button>
                 <div style="padding-top: 5px;"></div>
-                <button type="kirim" name="rapat-pembahasan-ba" class="btn btn-secondary btn-lg btn-block btn-sm">Print Berita Acara Rapat Pembahasan PTP</button>
+                <button type="kirim" name="rapat-pembahasan-ba" class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>
+                  Print Berita Acara Rapat Pembahasan PTP
+                  <i class="fa fa-print"></i>
+                </button>
                 <div style="padding-top: 5px;"></div>
-                <button type="kirim" name="rapat-pembahasan-dh" class="btn btn-secondary btn-lg btn-block btn-sm">Print Daftar Hadir Rapat Pembahasan PTP</button>
+                <button type="kirim" name="rapat-pembahasan-dh" class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>
+                  Print Daftar Hadir Rapat Pembahasan PTP
+                  <i class="fa fa-print"></i>
+                </button>
                 <div style="padding-top: 5px;"></div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm">Print Format Dokumentasi Rapat Pembahasan PTP</button>
+                <button type="kirim" name="rapat-pembahasan-dokumentasi"
+                  class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>
+                  Print Format Dokumentasi Rapat Pembahasan PTP
+                  <i class="fa fa-print"></i>
+                </button>
                 <div style="padding-bottom: 15px;"></div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>No. Risalah:</label>
-                  <input type="text" class="form-control" name="no_risalah" placeholder=".." value="<?php echo $no_risalah ?>">
+                  <input type="text" class="form-control" name="no_risalah" placeholder=".."
+                    value="<?php echo $no_risalah ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Tanggal Risalah:</label>
@@ -981,26 +1064,55 @@
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="kirim" name="risalah" class="btn btn-secondary btn-lg btn-block btn-sm">Print Risalah PTP</button>
+                <button type="kirim" name="risalah" class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>Print Risalah PTP<i class="fa fa-print"></i>
+                </button>
                 <div style="padding-bottom: 15px;"></div>
               </div>
               <div class="row">
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>No. Surat Keluar untuk Pertek:</label>
-                  <input type="text" class="form-control" name="no_surat_pertek" placeholder=".." value="<?php echo $no_surat_pertek ?>">
+                  <input type="text" class="form-control" name="no_surat_pertek" placeholder=".."
+                    value="<?php echo $no_surat_pertek ?>">
                 </div>
                 <div class="col-md-6 form-group">
                   <label>Tanggal Surat:</label>
-                  <input type="date" name="tanggal_surat_pertek" class="form-control" value="<?php echo $tanggal_surat_pertek ?>">
+                  <input type="date" name="tanggal_surat_pertek" class="form-control"
+                    value="<?php echo $tanggal_surat_pertek ?>">
                 </div>
               </div>
               <div class="row">
                 <div style="padding-top: 5px;"></div>
-                <button type="kirim" name="surat-pertek" class="btn btn-secondary btn-lg btn-block btn-sm">Print Surat Keluar untuk Pertek</button>
+                <button type="kirim" name="surat-pertek" class="btn btn-secondary btn-lg btn-block btn-sm">
+                  <i class="fa fa-save"></i>
+                  Print Surat Keluar untuk Pertek
+                  <i class="fa fa-print"></i>
+                </button>
                 <div style="padding-bottom: 15px;"></div>
               </div>
-              <div class="text-center"><button type="submit">Kembali</button></div>
             </form>
+            <div class="row">
+              <div class="col-md-12 form-group mt-3 mt-md-0" style="text-align: center;">
+                <div style="padding-top: 10px;"></div>
+                <button type="button" class="btn btn-warning">
+                  <i class="fa fa-arrow-left"></i>
+                  Warning
+                </button>
+                &emsp;
+                <button type="button" class="btn btn-success">
+                  <i class="fa fa-file"></i>
+                  Success
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 form-group mt-3 mt-md-0">
+                <button type="button" class="btn btn-outline-danger" onclick="hapus()">
+                  <i class="fa fa-trash"></i>
+                  Danger
+                </button>
+              </div>
+            </div>
 
           </div>
 
@@ -1011,6 +1123,20 @@
 
   </main><!-- End #main -->
 
+  <script type="text/javascript">
+    function hapus() {
+      Swal.fire({
+      title: "هل تريد الاستمرار؟",
+      icon: "question",
+      iconHtml: "؟",
+      confirmButtonText: "نعم",
+      cancelButtonText: "لا",
+      showCancelButton: true,
+      showCloseButton: true
+});
+    }
+  </script>
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -1019,7 +1145,9 @@
 
           <div class="col-lg-3 col-md-6 footer-info">
             <h3>Serenity</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies
+              darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo.
+              Amet volutpat consequat mauris nunc congue.</p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
@@ -1054,7 +1182,8 @@
 
           <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore
+              legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
             <form action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
@@ -1078,7 +1207,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

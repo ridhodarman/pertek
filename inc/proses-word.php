@@ -154,6 +154,8 @@ $uraian_sesuai = str_replace(chr(194), "", $uraian_sesuai);
 $alasan_bersyarat = str_replace(chr(194), "", $alasan_bersyarat);
 $alasan_tidak_sesuai = str_replace(chr(194), "", $alasan_tidak_sesuai);
 
+$tanggal_permohonan = date("d-m-Y",strtotime($tanggal_permohonan));
+
 $document = str_replace("#no_berkas", $no_berkas, $document);
 $document = str_replace("#tahun", $tahun, $document);
 $document = str_replace("#jenis_pertek", $jenis_pertek, $document);
@@ -213,7 +215,7 @@ $document = str_replace("#banjir_rob", $banjir_rob, $document);
 $document = str_replace("#banjir", $banjir, $document);
 $document = str_replace("#bencana_lainnya", $bencana_lainnya, $document);
 $document = str_replace("#keterangan_lain_lokasi", $keterangan_lain_lokasi, $document);
-$document = str_replace("#penggunaan_tanah_sekitar", $penggunaan_tanah_sekitar, $document);
+$document = str_replace("#ppenggunaan_tanah_sekitar", $penggunaan_tanah_sekitar, $document);
 $document = str_replace("#keserasian", $keserasian, $document);
 $document = str_replace("#kesesuaian_karakteristik_tanah", $kesesuaian_karakteristik_tanah, $document);
 $document = str_replace("#utara", $utara, $document);
