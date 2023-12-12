@@ -152,12 +152,24 @@
               </thead>
               <tbody>
                     <?php
+                      $batas = 20;
+                      $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                      $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+                
+                      $previous = $halaman - 1;
+                      $next = $halaman + 1;
+                      
                       include 'inc/koneksi.php';
-                      $no = 1;
-                      $query = "SELECT * FROM berkas ORDER BY waktu_entri DESC";
+
+                      $data = mysqli_query($koneksi,"select id from berkas");
+                      $jumlah_data = mysqli_num_rows($data);
+                      $total_halaman = ceil($jumlah_data / $batas);
+                      $query = "SELECT id, no_berkas, nama_pemohon, desa_nagari, kecamatan, tahun FROM berkas ORDER BY waktu_entri DESC limit ?, ?";
                       $sql = $koneksi->prepare($query);
+                      $sql->bind_param("ss", $halaman_awal, $batas);
                       $sql->execute();
                       $data = $sql->get_result();
+                      $no = $halaman_awal+1;
              
                       if ($data->num_rows > 0) {
                         while ($row = $data->fetch_assoc()) {
@@ -185,6 +197,23 @@
                   <?php } ?>
               </tbody>
             </table>
+            <nav>
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>>Previous</a>
+                </li>
+                <?php 
+                for($x=1;$x<=$total_halaman;$x++){
+                  ?> 
+                  <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                  <?php
+                }
+                ?>				
+                <li class="page-item">
+                  <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+                </li>
+              </ul>
+            </nav>
           </div>
 
         </div>
@@ -239,8 +268,8 @@
           <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-binoculars" style="color:#41cf2e;"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <h4 class="title"><a target="_blank" href="assets/img/matapencaharian.png">Mata Pencaharian</a></h4>
+              <p class="description">Mata Pencaharian berdasarkan Profil Daerah Kabupaten Agam, Diskominfo</p>
             </div>
           </div>
 
