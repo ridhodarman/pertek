@@ -996,7 +996,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12 form-group mt-3 mt-md-0">
-                  <label>Uraian Sesuai:</label>
+                  <label>Uraian Sesuai ±:</label>
                   <textarea class="form-control" placeholder=".." name="uraian_sesuai"><?php
                     if (!empty($jaringan_lainnya)) {
                       echo $uraian_sesuai;
@@ -1005,7 +1005,7 @@
                   ?></textarea>
                 </div>
                 <div class="col-md-12 form-group mt-3 mt-md-0">
-                  <label>Alasan Tidak Sesuai:</label>
+                  <label>Alasan Tidak Sesuai ±:</label>
                   <textarea class="form-control" placeholder=".." name="alasan_tidak_sesuai"><?php
                     if (!empty($jaringan_lainnya)) {
                       echo $alasan_tidak_sesuai;
@@ -1014,7 +1014,7 @@
                   ?></textarea>
                 </div>
                 <div class="col-md-12 form-group mt-3 mt-md-0">
-                  <label>Alasan Sesuai Bersyarat:</label>
+                  <label>Alasan Sesuai Bersyarat ±:</label>
                   <textarea class="form-control" placeholder=".." name="alasan_bersyarat"><?php
                     if (!empty($jaringan_lainnya)) {
                       echo $alasan_bersyarat;
@@ -1107,9 +1107,9 @@
             </div>
             <div class="row">
               <div class="col-md-12 form-group mt-3 mt-md-0">
-                <button type="button" class="btn btn-outline-danger" onclick="hapus()">
+                <button type="button" class="btn btn-outline-danger" onclick="hapus(123)">
                   <i class="fa fa-trash"></i>
-                  Danger
+                  Hapus
                 </button>
               </div>
             </div>
@@ -1126,15 +1126,24 @@
   <script type="text/javascript">
     function hapus() {
       Swal.fire({
-      title: "هل تريد الاستمرار؟",
-      icon: "question",
-      iconHtml: "؟",
-      confirmButtonText: "نعم",
-      cancelButtonText: "لا",
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
       showCancelButton: true,
-      showCloseButton: true
-});
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: '<a href="#">Why do I have this issue?</a>'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Ndak Bisa!",
+          text: "Fitur hapus data alun tersedia",
+          icon: "success"
+        });
+      }
+    });
     }
+
   </script>
 
   <!-- ======= Footer ======= -->

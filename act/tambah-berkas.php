@@ -24,7 +24,7 @@ if (isset($_POST['baru'])) {
 
 		if ($sql->execute()) {
 	    	//echo "<script>alert('Data Berhasil Disimpan');location='index.php';</script>";
-	    	echo "<script>alert('Data Berhasil Disimpan');location='../';</script>";
+	    	header("location:../index.php?sukses=Berkas Nomor ".$no_berkas." berhasil dibuat");
 
 	    	//$query = "SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'berkas'";
 	    	$query = "SELECT max(id) FROM berkas";
@@ -67,12 +67,13 @@ if (isset($_POST['baru'])) {
 	}
 	catch (exception $e) {
 		// Cek koneksi
-		if (mysqli_connect_errno()){
-		echo "gagal diproses, kendalanyo:<br/>" . mysqli_connect_error();
-		}
-		else {
-			echo "ado error, caliak data yang di input lu";
-		}
+		// if (mysqli_connect_errno()){
+		// echo "gagal diproses, kendalanyo:<br/>" . mysqli_connect_error();
+		// }
+		// else {
+		// 	echo "ado error, caliak data yang di input lu";
+		// }
+		header("location:../assets/error");
 	}
 }
 else {

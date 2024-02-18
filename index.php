@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Serenity Bootstrap Template - Index</title>
+  <title>Pertek Seksi 3</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -34,10 +34,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
@@ -70,7 +71,7 @@
           <li><a href="pricing.html">Pricing</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="rekap.php">Rekap</a></li>
 
           <li><a class="getstarted" href="about.html">Get Started</a></li>
         </ul>
@@ -103,7 +104,7 @@
                 <div class="count-box py-5">
                   <i class="bi bi-emoji-smile"></i>
                   <span data-purecounter-start="0" data-purecounter-end="99" class="purecounter">0</span>
-                  <p>Berkas Pertek</p>
+                  <p id="berkas">Berkas Pertek</p>
                 </div>
               </div>
 
@@ -137,8 +138,6 @@
 
         <div class="row">
 
-         
-
           <div class="col-lg-12 pt-3 pt-lg-0 content">
             <table class="table table-bordered">
               <thead>
@@ -151,71 +150,82 @@
                 </tr>
               </thead>
               <tbody>
-                    <?php
-                      $batas = 20;
-                      $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-                      $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
-                
-                      $previous = $halaman - 1;
-                      $next = $halaman + 1;
-                      
-                      include 'inc/koneksi.php';
+                <?php
+                $batas = 20;
+                $halaman = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
+                $halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;
 
-                      $data = mysqli_query($koneksi,"select id from berkas");
-                      $jumlah_data = mysqli_num_rows($data);
-                      $total_halaman = ceil($jumlah_data / $batas);
-                      $query = "SELECT id, no_berkas, nama_pemohon, desa_nagari, kecamatan, tahun FROM berkas ORDER BY waktu_entri DESC limit ?, ?";
-                      $sql = $koneksi->prepare($query);
-                      $sql->bind_param("ss", $halaman_awal, $batas);
-                      $sql->execute();
-                      $data = $sql->get_result();
-                      $no = $halaman_awal+1;
-             
-                      if ($data->num_rows > 0) {
-                        while ($row = $data->fetch_assoc()) {
-                          $id = $row['id'];
-                          $no_berkas = $row['no_berkas'];
-                          $tahun = $row['tahun'];
-                          $nama_pemohon = $row['nama_pemohon'];
-                          $nagari = $row['desa_nagari'];
-                          $kecamatan = $row['kecamatan'];
-                      ?>
-                  <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td><?php echo $no_berkas."/".$tahun; ?></td>
-                    <td><?php echo $nama_pemohon ?></td>
-                    <td><?php echo $nagari.", ".$kecamatan; ?></td>
-                    <td>
-                      <a href="edit.php?berkas=<?php echo base64_encode($id) ?>">
-                        <button type="button" class="btn btn-outline-primary btn-sm">Detail</button></td>
-                      </a>
-                  </tr>
-                  <?php } } else { ?> 
+                $previous = $halaman - 1;
+                $next = $halaman + 1;
+
+                include 'inc/koneksi.php';
+
+                $data = mysqli_query($koneksi, "select id from berkas");
+                $jumlah_data = mysqli_num_rows($data);
+                $total_halaman = ceil($jumlah_data / $batas);
+                $query = "SELECT id, no_berkas, nama_pemohon, desa_nagari, kecamatan, tahun FROM berkas ORDER BY waktu_entri DESC limit ?, ?";
+                $sql = $koneksi->prepare($query);
+                $sql->bind_param("ss", $halaman_awal, $batas);
+                $sql->execute();
+                $data = $sql->get_result();
+                $no = $halaman_awal + 1;
+
+                if ($data->num_rows > 0) {
+                  while ($row = $data->fetch_assoc()) {
+                    $id = $row['id'];
+                    $no_berkas = $row['no_berkas'];
+                    $tahun = $row['tahun'];
+                    $nama_pemohon = $row['nama_pemohon'];
+                    $nagari = $row['desa_nagari'];
+                    $kecamatan = $row['kecamatan'];
+                ?>
                     <tr>
-                      <td colspan='5'>Tidak ada data ditemukan</td>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $no_berkas . "/" . $tahun; ?></td>
+                      <td><?php echo $nama_pemohon ?></td>
+                      <td><?php echo $nagari . ", " . $kecamatan; ?></td>
+                      <td>
+                        <a href="edit.php?berkas=<?php echo base64_encode($id) ?>">
+                          <button type="button" class="btn btn-outline-primary btn-sm">Detail</button>
+                      </td>
+                      </a>
                     </tr>
-                  <?php } ?>
+                  <?php }
+                } else { ?>
+                  <tr>
+                    <td colspan='5'>Tidak ada data ditemukan</td>
+                  </tr>
+                <?php } ?>
               </tbody>
             </table>
             <nav>
               <ul class="pagination justify-content-center">
                 <li class="page-item">
-                  <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>>Previous</a>
+                  <a class="page-link" <?php if ($halaman > 1) {
+                                          echo "href='?halaman=$previous'";
+                                        } ?>>Previous</a>
                 </li>
-                <?php 
-                for($x=1;$x<=$total_halaman;$x++){
-                  ?> 
+                <?php
+                for ($x = 1; $x <= $total_halaman; $x++) {
+                ?>
                   <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
-                  <?php
+                <?php
                 }
-                ?>				
+                ?>
                 <li class="page-item">
-                  <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+                  <a class="page-link" <?php if ($halaman < $total_halaman) {
+                                          echo "href='?halaman=$next'";
+                                        } ?>>Next</a>
                 </li>
               </ul>
             </nav>
           </div>
-
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder=" cari salah satu saja, misalnyo: nomor berkas se, namo pemohon, bertindak atas nama, dll" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">@example.com</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -247,7 +257,7 @@
             <div class="icon-box" data-aos="fade-up">
               <div class="icon"><i class="bi bi-card-checklist" style="color: #3fcdc7;"></i></div>
               <h4 class="title"><a target="_blank" href="https://agamkab.bps.go.id/statictable/2015/06/04/11/tinggi-ibu-kecamatan-diatas-permukaan-laut.html">Ketinggian</a></h4>
-              <p class="description">Tinggi Ibu Kecamatan  diatas Permukaan Laut berdasarkan data Badan Pusat Statistik</p>
+              <p class="description">Tinggi Ibu Kecamatan diatas Permukaan Laut berdasarkan data Badan Pusat Statistik</p>
             </div>
           </div>
           <div class="col-md-6">
@@ -375,7 +385,25 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <?php
+    if(isset($_GET['sukses'])){
+      $sukses=$_GET['sukses'];
+      echo '
+        <script type="text/javascript">
+        $(document).ready(function (){
+          Swal.fire({
+            position: "bottom-end",
+            icon: "success",
+            title: "'.$sukses.'",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
+        document.getElementById("berkas").scrollIntoView();
+      </script>
+      ';
+    }
+  ?>
 </body>
 
 </html>

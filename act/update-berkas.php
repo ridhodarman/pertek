@@ -290,5 +290,6 @@ try {
 		//echo "data berhasil di update<br/>Print...";
 	}
 } catch (exception $e) {
-	echo "<b>gagal di proses, kendalayo:</b><br/>".mysqli_error($koneksi);	
+	//echo "<b>gagal di proses, kendalayo:</b><br/>".mysqli_error($koneksi);	
+	header("location:../assets/error");
 }
