@@ -128,9 +128,6 @@
                           FROM berkas
                           WHERE nama_pemohon LIKE ? OR bertindak_atas_nama LIKE ? OR no_berkas LIKE ?
                           ORDER BY waktu_entri DESC limit ?, ?";
-                $jumlah_data = mysqli_num_rows($query);
-                $total_halaman = ceil($jumlah_data / $batas);
-
                 $sql = $koneksi->prepare($query);
                 $cari = "%".$cari."%";
                 $sql->bind_param("sssss", $cari, $cari, $cari, $halaman_awal, $batas);
