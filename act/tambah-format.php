@@ -4,69 +4,35 @@ if (isset($_POST['baru'])) {
 	include '../inc/koneksi.php';
 
 	try {
-		// menangkap data yang di kirim dari form
-		$no_berkas = $_POST['no_berkas'];
-		$tahun = $_POST['tahun'];
-		$jenis_pertek = $_POST['jenis_pertek'];
-		$nama_pemohon = $_POST['nama_pemohon'];
-		$nik = $_POST['nik'];
-		$alamat = $_POST['alamat'];
-		$bertindak_atas_nama = $_POST['bertindak_atas_nama'];
-		$nagari = $_POST['nagari'];
-		$kecamatan = $_POST['kecamatan'];
-		 
-		// menginput data ke database
-		// mysqli_query($koneksi,"insert into berkas (no_berkas, tahun, jenis_pertek, nama_pemohon, nik, alamat, bertindak_atas_nama, desa_nagari, kecamatan, tanggal_rapat_persiapan, jam_rapat_persiapan) values ($no_berkas, $tahun, '$jenis_pertek', '$nama_pemohon', '$nik', '$alamat', '$bertindak_atas_nama', '$nagari', '$kecamatan', '$tanggal_rapat_persiapan', '$jam_rapat_persiapan')");
+		$no_sk = $_POST['no_sk'];
+		
+		$rand = rand();
+		
+		$ekstensi =  array('pdf');
+		$filename = $_FILES['file_sk']['name'];
+		$ext = pathinfo($filename, PATHINFO_EXTENSION);
+		if(!in_array($ext,$ekstensi) ) {header("location:format.php?alert=Gagal input data, File SK harus dalam format pdf");}
 
-		$query = "insert into format (no_sk, tanggal_sk, 
-					surat_undangan_rapat_persiapan, notulensi_rapat_persiapan, daftar_hadir_rapat_persiapan, 
-					st_pl , ba_pl, st_pengolahan_data, ba_pengolahan_data, daftar_hadir_pengolahan_data,
-					surat_undangan_pembahasan_ptp, ba_pembahasan_ptp, daftar_hadir_pembahasan_ptp,
-					risalah, surat_ptp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		function cek_format($file) {
+			if(isset($_POST[$file])) {
+				$ekstensi =  array('rtf');
+				$filename = $_FILES[$file]['name'];
+				$ext = pathinfo($filename, PATHINFO_EXTENSION);
+				if(!in_array($ext,$ekstensi) ) {header("location:format.php?alert=Gagal input data, Format file ".$file." harus dalam format .rtf");}
+			}
+		}
+
+		$file_sk = "_SK___".$no_sk."___".$rand.'.pdf';
+		move_uploaded_file($_FILES['file_sk']['tmp_name'], '../assets/format/'.$file_sk);
+
+		$query = "insert into format (no_sk, tanggal_sk, file_sk) 
+				VALUES (?, ?, ?)";
 		$sql = $koneksi->prepare($query);
-		$sql->bind_param("ssssssssssssssss", $no_berkas, $tahun, $jenis_pertek, $nama_pemohon, $nik, $alamat, $bertindak_atas_nama, $nagari, $kecamatan);
+		$sql->bind_param("sss", $no_sk, $tanggal_sk, $file_sk);
 
 		if ($sql->execute()) {
-	    	//echo "<script>alert('Data Berhasil Disimpan');location='index.php';</script>";
-	    	header("location:../index.php?sukses=Berkas Nomor ".$no_berkas." berhasil dibuat");
-
-	    	//$query = "SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'berkas'";
-	    	$query = "SELECT max(id) FROM berkas";
-			$sql = $koneksi->prepare($query);
-			$sql->execute();
-			$data = $sql->get_result();
-			if ($data->num_rows > 0) {
-				while ($row = $data->fetch_assoc()) {
-				  //$id = $row['auto_increment'];
-					$id = $row['max(id)'];
-				}
-				//$id=$id-1;
-
-		    	$query = "SELECT * FROM berkas WHERE id=?";
-				$sql = $koneksi->prepare($query);
-				$sql->bind_param("i", $id);
-				$sql->execute();
-				$data = $sql->get_result();
-				if ($data->num_rows > 0) {
-					while ($row = $data->fetch_assoc()) {
-					  $id = $row['id'];
-					  $no_berkas = $row['no_berkas'];
-					  $tahun = $row['tahun'];
-					  $nama_pemohon = $row['nama_pemohon'];
-					  $nagari = $row['desa_nagari'];
-					  $kecamatan = $row['kecamatan'];
-			    	} 
-			    	echo $nama_pemohon.$no_berkas.$tahun;
-			    }
-			    else {
-		    	//echo "<script>alert('Error');window.history.go(-1);</script>";
-		    	//echo $query;
-				// mengalihkan halaman kembali ke index.php
-				//echo "tidak ada error data berhasil di-update";
-				//return 0;
-				//header("location:../inputberkas.php#persiapan");
-				}
-			}
+	    	echo "<script>alert('Data Berhasil Disimpan');location='../inputformat.php';</script>";
+	    	//header("location:../format.php?sukses=Format SK No. ".$no_sk." berhasil dibuat");
 		}
 	}
 	catch (exception $e) {
@@ -77,7 +43,8 @@ if (isset($_POST['baru'])) {
 		// else {
 		// 	echo "ado error, caliak data yang di input lu";
 		// }
-		header("location:../assets/error");
+		echo $e;
+		//header("location:../assets/error");
 	}
 }
 else {
