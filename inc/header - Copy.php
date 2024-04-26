@@ -13,8 +13,8 @@
         <li><a href="index.php" id="home">Home</a></li>
         <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Team</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="team.html">Team</a></li>
             <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
               <ul>
                 <li><a href="#">Deep Drop Down 1</a></li>
@@ -26,10 +26,10 @@
             </li>
           </ul>
         </li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="inputformat.php">Blog</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="rekap.php" id="rekap">Rekap</a></li>
 
         <li><a class="getstarted" href="about.html">Get Started</a></li>

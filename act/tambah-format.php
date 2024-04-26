@@ -5,7 +5,7 @@ if (isset($_POST['baru'])) {
 
 	try {
 		$no_sk = $_POST['no_sk'];
-		
+		$tanggal_sk = $_POST['tanggal_sk'];
 		$rand = rand();
 		
 		$ekstensi =  array('pdf');
