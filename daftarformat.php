@@ -60,7 +60,7 @@
                 $data = mysqli_query($koneksi, "select id from format_pertek");
                 $jumlah_data = mysqli_num_rows($data);
                 $total_halaman = ceil($jumlah_data / $batas);
-                $query = "SELECT id, no_sk, tanggal_sk, file_sk FROM format ORDER BY tanggal_sk DESC limit ?, ?";
+                $query = "SELECT id, no_sk, tanggal_sk, file_sk FROM format_pertek ORDER BY tanggal_sk DESC limit ?, ?";
                 $sql = $koneksi->prepare($query);
                 $sql->bind_param("ss", $halaman_awal, $batas);
                 $sql->execute();
@@ -84,7 +84,7 @@
                       <td><?php echo $tanggal_sk; ?></td>
                       <td><?php echo $file_sk; ?></td>
                       <td>
-                        <a href="editformat.php?berkas=<?php echo base64_encode($id) ?>">
+                        <a href="editformat.php?format=<?php echo base64_encode($id) ?>">
                           <button type="button" class="btn btn-outline-primary btn-sm">Detail</button>
                       </td>
                       </a>

@@ -6,27 +6,54 @@
 </head>
 
 <body>
-  <?php include 'inc/header.php';?>
-
-  <main id="main">
-    <?php
+  <?php
     include 'inc/koneksi.php';
-    $id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_GET['berkas']), ENT_QUOTES)));
+    $id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_GET['format']), ENT_QUOTES)));
 
-    $query = "SELECT * FROM berkas_pertek WHERE id=?";
+    $query = "SELECT * FROM format_pertek WHERE id=?";
     $sql = $koneksi->prepare($query);
     $sql->bind_param("i", $id);
     $sql->execute();
     $data = $sql->get_result();
     while ($row = $data->fetch_assoc()) {
-      $no_berkas = $row['no_berkas'];
-      $tahun = $row['tahun'];
-      $jenis_pertek = $row['jenis_pertek'];
-      $nama_pemohon = $row['nama_pemohon'];
-      $nik = $row['nik'];
-      $alamat = $row['alamat'];
+      $no_sk = $row['no_sk'];
+      $tanggal_sk = $row['tanggal_sk'];
+      $file_sk = $row['file_sk'];
+      $surat_undangan_rapat_persiapan = $row['surat_undangan_rapat_persiapan'];
+      $daftar_hadir_rapat_persiapan = $row['daftar_hadir_rapat_persiapan'];
     }
+
     ?>
+
+  <?php include 'inc/header.php';?>
+
+  <script type="text/javascript">
+    <?php
+      if(isset($_GET['alert'])) {
+        $pesan = $_GET['alert'];
+        echo '
+          Swal.fire({
+          title: "Success",
+          text: "'.$pesan.'",
+          icon: "success"
+        });
+        ';
+      }
+
+      if(isset($_GET['gagal'])) {
+        $pesan = $_GET['gagal'];
+        echo '
+          Swal.fire({
+          title: "Gagal",
+          text: "'.$pesan.'",
+          icon: "error"
+        });
+        ';
+      }
+    ?>
+  </script>
+
+  <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
@@ -59,12 +86,12 @@
                 <tr>
                   <td>Nomor SK</td>
                   <td>:</td>
-                  <td>xxxxxxxxxxxx</td>
+                  <td><?php echo $no_sk; ?></td>
                 </tr>
                 <tr>
                 <td>Tanggal SK</td>
                 <td>:</td>
-                <td>xxxxxxxx</td>
+                <td><?php echo date("d-M-Y", strtotime($tanggal_sk)); ?></td>
                 </tr>
               </table>
             </div>
@@ -73,6 +100,8 @@
                 Edit Data SK
               </button>
             </div>
+          </div>
+        
 
               <!-- Modal -->
               <div class="modal fade" id="modalSK" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
@@ -84,19 +113,15 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="act/tambah-format.php" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+                    <form action="act/format/update-SK.php" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                     <div class="modal-body">
                           <div>
                             <label>Nomor SK:</label>
-                            <input type="text" name="no_sk" class="form-control" id="no_sk" placeholder="nomor SK Pertek">
+                            <input type="text" name="no_sk" class="form-control" id="no_sk" placeholder="nomor SK Pertek" value="<?php echo $no_sk; ?>">
                           </div>
                           <div class="mt-3">
                             <label>Tanggal SK:</label>
-                            <input type="date" class="form-control" name="tanggal_sk">
-                          </div>
-                          <div class="mt-3">
-                            <label>File SK (pdf):</label>
-                            <input type="file" class="form-control" name="file_sk">
+                            <input type="date" class="form-control" name="tanggal_sk" value="<?php echo $tanggal_sk; ?>">
                           </div>
                     </div>
                     <div class="modal-footer">
@@ -108,13 +133,96 @@
                 </div>
               </div>
 
-            <form action="act/tambah-format.php" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
 
-            <div>
-              <label>Format Surat Undangan Rapat Persiapan:</label>
-              <button type="button" class="btn-sm btn-secondary">Unduh Format</button>
-              <button type="button" class="btn-sm btn-primary">Ganti Format</button>
+            <div class="col-md-12 form-group"
+              <label> File SK </label>
+              <?php
+                if ($file_sk) {
+                  ?> <a target="_blank" href="assets/format/<?php echo $file_sk; ?>"><button type="button" class="btn-sm btn-secondary">Unduh SK</button></a><?php
+                }
+                else {
+                  ?> <font color="red">file SK belum di-upload</font> <?php
+                }
+              ?>
+              <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modal-fileSK">Upload File SK</button>
+              <!-- Modal -->
+              <div class="modal fade" id="modal-fileSK" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload SK</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="act/format/update-SK.php" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+                    <div class="modal-body">
+                          <div>
+                            <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
+                            <input type="hidden" name="no_sk" value="<?php echo $no_sk; ?>" />
+                            <label>File SK</label>
+                            <p><small>upload dalam format *.pdf</small>
+                              <br/><small>file yang lama akan ditimpa</small>
+                            </p>
+                            <input type="file" class="form-control" name="file_sk"/>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button name="kirim" type="submit" class="btn btn-primary">Simpan SK</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            
+            <div class="col-md-12 form-group"
+              <label>Format Surat Undangan Rapat Persiapan:</label>
+              <?php
+                if ($surat_undangan_rapat_persiapan) {
+                  ?> <a href="assets/format/<?php echo $surat_undangan_rapat_persiapan; ?>"><button type="button" class="btn-sm btn-secondary">Unduh Format</button></a><?php
+                }
+                else {
+                  ?> <font color="red">format belum di-upload</font> <?php
+                }
+              ?>
+              <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modalSURP">Upload Format Baru</button>
+              <!-- Modal -->
+              <div class="modal fade" id="modalSURP" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload Format</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="act/format/update-surp.php" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+                    <div class="modal-body">
+                          <div>
+                            <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
+                            <label>Format Surat Undangan Rapat Persiapan</label>
+                            <p><small>upload dalam format *.rtf</small>
+                              <br/><small>file yang lama akan ditimpa</small>
+                            </p>
+                            <input type="file" class="form-control" name="file_surp">
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button name="kirim" type="submit" class="btn btn-primary">Simpan Format</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
               <div class="row mt-5">
                 <div class="col-md-4 form-group">
                 <label>Format Surat Undangan Rapat Persiapan:</label>
