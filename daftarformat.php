@@ -57,7 +57,7 @@
 
                 include 'inc/koneksi.php';
 
-                $data = mysqli_query($koneksi, "select id from berkas");
+                $data = mysqli_query($koneksi, "select id from format_pertek");
                 $jumlah_data = mysqli_num_rows($data);
                 $total_halaman = ceil($jumlah_data / $batas);
                 $query = "SELECT id, no_sk, tanggal_sk, file_sk FROM format ORDER BY tanggal_sk DESC limit ?, ?";

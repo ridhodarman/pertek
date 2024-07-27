@@ -114,7 +114,7 @@
 
                 include 'inc/koneksi.php';
 
-                $data = mysqli_query($koneksi, "select id from berkas");
+                $data = mysqli_query($koneksi, "select id from berkas_pertek");
                 $jumlah_data = mysqli_num_rows($data);
                 $total_halaman = ceil($jumlah_data / $batas);
                 $cari = $_GET['cari'];

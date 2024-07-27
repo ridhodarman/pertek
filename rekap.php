@@ -70,11 +70,11 @@
 
                 include 'inc/koneksi.php';
 
-                $data = mysqli_query($koneksi, "select id from berkas");
+                $data = mysqli_query($koneksi, "select id from berkas_pertek");
                 $jumlah_data = mysqli_num_rows($data);
                 $total_halaman = ceil($jumlah_data / $batas);
                 $query = "SELECT id, no_berkas, jenis_pertek, nama_pemohon, desa_nagari, kecamatan, tahun, luas, no_risalah, tanggal_risalah, no_stpl, tanggal_stpl, no_st_pengolahan_data, tanggal_st_pengolahan_data
-                          FROM berkas ORDER BY tanggal_risalah DESC limit ?, ?";
+                          FROM berkas_pertek ORDER BY tanggal_risalah DESC limit ?, ?";
                 $sql = $koneksi->prepare($query);
                 $sql->bind_param("ss", $halaman_awal, $batas);
                 $sql->execute();

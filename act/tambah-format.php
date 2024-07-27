@@ -25,7 +25,7 @@ if (isset($_POST['baru'])) {
 		$file_sk = "_SK___".$no_sk."___".$rand.'.pdf';
 		move_uploaded_file($_FILES['file_sk']['tmp_name'], '../assets/format/'.$file_sk);
 
-		$query = "insert into format (no_sk, tanggal_sk, file_sk) 
+		$query = "insert into format_pertek (no_sk, tanggal_sk, file_sk) 
 				VALUES (?, ?, ?)";
 		$sql = $koneksi->prepare($query);
 		$sql->bind_param("sss", $no_sk, $tanggal_sk, $file_sk);

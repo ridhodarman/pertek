@@ -18,7 +18,7 @@ if (isset($_POST['baru'])) {
 		// menginput data ke database
 		// mysqli_query($koneksi,"insert into berkas (no_berkas, tahun, jenis_pertek, nama_pemohon, nik, alamat, bertindak_atas_nama, desa_nagari, kecamatan, tanggal_rapat_persiapan, jam_rapat_persiapan) values ($no_berkas, $tahun, '$jenis_pertek', '$nama_pemohon', '$nik', '$alamat', '$bertindak_atas_nama', '$nagari', '$kecamatan', '$tanggal_rapat_persiapan', '$jam_rapat_persiapan')");
 
-		$query = "insert into berkas (no_berkas, tahun, jenis_pertek, nama_pemohon, nik, alamat, bertindak_atas_nama, desa_nagari, kecamatan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$query = "insert into berkas_pertek (no_berkas, tahun, jenis_pertek, nama_pemohon, nik, alamat, bertindak_atas_nama, desa_nagari, kecamatan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		$sql = $koneksi->prepare($query);
 		$sql->bind_param("sssssssss", $no_berkas, $tahun, $jenis_pertek, $nama_pemohon, $nik, $alamat, $bertindak_atas_nama, $nagari, $kecamatan);
 

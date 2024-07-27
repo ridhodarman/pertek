@@ -31,11 +31,14 @@
         <div class="row justify-content-end">
           <div class="col-lg-11">
             <div class="row justify-content-end">
-
+              <?php
+                 include 'inc/koneksi.php';
+                  $berkas = mysqli_num_rows(mysqli_query($koneksi, "select id from berkas_pertek"));
+              ?>
               <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box py-5">
                   <i class="bi bi-emoji-smile"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="99" class="purecounter">0</span>
+                  <span data-purecounter-start="0" data-purecounter-end="<?php echo $berkas; ?>" class="purecounter">0</span>
                   <p id="berkas">Berkas Pertek</p>
                 </div>
               </div>
@@ -90,12 +93,10 @@
                 $previous = $halaman - 1;
                 $next = $halaman + 1;
 
-                include 'inc/koneksi.php';
-
-                $data = mysqli_query($koneksi, "select id from berkas");
+                $data = mysqli_query($koneksi, "select id from berkas_pertek");
                 $jumlah_data = mysqli_num_rows($data);
                 $total_halaman = ceil($jumlah_data / $batas);
-                $query = "SELECT id, no_berkas, nama_pemohon, desa_nagari, kecamatan, tahun FROM berkas ORDER BY waktu_entri DESC limit ?, ?";
+                $query = "SELECT id, no_berkas, nama_pemohon, desa_nagari, kecamatan, tahun FROM berkas_pertek ORDER BY waktu_entri DESC limit ?, ?";
                 $sql = $koneksi->prepare($query);
                 $sql->bind_param("ss", $halaman_awal, $batas);
                 $sql->execute();

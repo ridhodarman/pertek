@@ -13,7 +13,7 @@
     include 'inc/koneksi.php';
     $id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_GET['berkas']), ENT_QUOTES)));
 
-    $query = "SELECT * FROM berkas WHERE id=?";
+    $query = "SELECT * FROM berkas_pertek WHERE id=?";
     $sql = $koneksi->prepare($query);
     $sql->bind_param("i", $id);
     $sql->execute();

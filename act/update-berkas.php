@@ -95,7 +95,7 @@ try {
 	$no_surat_pertek = $_POST['no_surat_pertek'];
 	$tanggal_surat_pertek = $_POST['tanggal_surat_pertek'];
 
-	$query = "UPDATE berkas SET 
+	$query = "UPDATE berkas_pertek SET 
 				no_berkas=?,
 				tahun=?,
 				jenis_pertek=?,
