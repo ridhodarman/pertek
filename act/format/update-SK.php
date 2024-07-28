@@ -11,14 +11,6 @@ while ($row = $data->fetch_assoc()) {
   $file_sk = $row['file_sk'];
 }
 
-$file="../../assets/format/".$file_sk;
-if ($file){
-	if (!unlink($file))
-	{
-	echo ("gagal menghapus file $file");
-	}
-}
-
 $rand = rand();
 $ekstensi =  array('pdf');
 $filename = $_FILES['file_sk']['name'];
@@ -27,6 +19,14 @@ if(!in_array($ext,$ekstensi) ) {
 	header("location:../../editformat.php?format=".$_POST['id']."&gagal=Gagal input data, File SK harus dalam format pdf");
 }
 else {
+	$file="../../assets/format/".$file_sk;
+	if ($file){
+		if (!unlink($file))
+		{
+		echo ("gagal menghapus file $file");
+		}
+	}
+
 	$file_sk = "_SK___".$no_sk."___".$rand.'.pdf';
 	move_uploaded_file($_FILES['file_sk']['tmp_name'], '../../assets/format/'.$file_sk);
 

@@ -113,8 +113,9 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="act/format/update-SK.php" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+                    <form action="act/format/update-no-tgl-sk.php" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                     <div class="modal-body">
+                          <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
                           <div>
                             <label>Nomor SK:</label>
                             <input type="text" name="no_sk" class="form-control" id="no_sk" placeholder="nomor SK Pertek" value="<?php echo $no_sk; ?>">
@@ -126,7 +127,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button name="baru" type="submit" class="btn btn-primary">Simpan Perubahan Data</button>
+                      <button name="kirim" type="submit" class="btn btn-primary">Simpan Perubahan Data</button>
                     </div>
                     </form>
                   </div>
@@ -203,6 +204,7 @@
                     <div class="modal-body">
                           <div>
                             <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
+                            <input type="hidden" name="no_sk" value="<?php echo $no_sk; ?>" />
                             <label>Format Surat Undangan Rapat Persiapan</label>
                             <p><small>upload dalam format *.rtf</small>
                               <br/><small>file yang lama akan ditimpa</small>
