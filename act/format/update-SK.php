@@ -11,7 +11,7 @@ while ($row = $data->fetch_assoc()) {
   $file_sk = $row['file_sk'];
 }
 
-$rand = rand();
+$rand = rand(10,999);
 $ekstensi =  array('pdf');
 $filename = $_FILES['file_sk']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);

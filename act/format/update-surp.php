@@ -12,7 +12,7 @@ while ($row = $data->fetch_assoc()) {
   $file_surp = $row['file_surp'];
 }
 
-$rand = rand();
+$rand = rand(10,999);
 $ekstensi =  array('rtf');
 $filename = $_FILES['file_surp']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);

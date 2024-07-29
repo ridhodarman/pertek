@@ -6,7 +6,7 @@ if (isset($_POST['baru'])) {
 	try {
 		$no_sk = $_POST['no_sk'];
 		$tanggal_sk = $_POST['tanggal_sk'];
-		$rand = rand();
+		$rand = rand(10,999);
 		
 		$ekstensi =  array('pdf');
 		$filename = $_FILES['file_sk']['name'];
@@ -31,7 +31,7 @@ if (isset($_POST['baru'])) {
 		$sql->bind_param("sss", $no_sk, $tanggal_sk, $file_sk);
 
 		if ($sql->execute()) {
-	    	echo "<script>alert('Data Berhasil Disimpan');location='../inputformat.php';</script>";
+	    	echo "<script>alert('Data Berhasil Disimpan');location='../daftarformat.php';</script>";
 	    	//header("location:../format.php?sukses=Format SK No. ".$no_sk." berhasil dibuat");
 		}
 	}
