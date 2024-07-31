@@ -8,10 +8,28 @@ if (isset($_POST['baru'])) {
 		$tanggal_sk = $_POST['tanggal_sk'];
 		$rand = rand(10,999);
 		
+		$no_sk2 = preg_replace("/[^a-zA-Z0-9]/", "", $no_sk);
+
 		$ekstensi =  array('pdf');
 		$filename = $_FILES['file_sk']['name'];
 		$ext = pathinfo($filename, PATHINFO_EXTENSION);
-		if(!in_array($ext,$ekstensi) ) {header("location:format.php?alert=Gagal input data, File SK harus dalam format pdf");}
+		if(!in_array($ext,$ekstensi) ) {
+			header("location:daftarformat.php?alert=Gagal input data, File SK harus dalam format pdf");
+		}
+		else {
+			$file_sk = "_SK___".$no_sk2."___".$rand.'.pdf';
+			move_uploaded_file($_FILES['file_sk']['tmp_name'], '../assets/format/'.$file_sk);
+
+			$query = "insert into format_pertek (no_sk, tanggal_sk, file_sk) 
+					VALUES (?, ?, ?)";
+			$sql = $koneksi->prepare($query);
+			$sql->bind_param("sss", $no_sk, $tanggal_sk, $file_sk);
+
+			if ($sql->execute()) {
+				echo "<script>alert('Data Berhasil Disimpan');location='../daftarformat.php';</script>";
+				header("location:../daftarformat.php?sukses=Format SK No. ".$no_sk." berhasil dibuat");
+			}
+		}
 
 		function cek_format($file) {
 			if(isset($_POST[$file])) {
@@ -22,18 +40,6 @@ if (isset($_POST['baru'])) {
 			}
 		}
 
-		$file_sk = "_SK___".$no_sk."___".$rand.'.pdf';
-		move_uploaded_file($_FILES['file_sk']['tmp_name'], '../assets/format/'.$file_sk);
-
-		$query = "insert into format_pertek (no_sk, tanggal_sk, file_sk) 
-				VALUES (?, ?, ?)";
-		$sql = $koneksi->prepare($query);
-		$sql->bind_param("sss", $no_sk, $tanggal_sk, $file_sk);
-
-		if ($sql->execute()) {
-	    	echo "<script>alert('Data Berhasil Disimpan');location='../daftarformat.php';</script>";
-	    	//header("location:../format.php?sukses=Format SK No. ".$no_sk." berhasil dibuat");
-		}
 	}
 	catch (exception $e) {
 		// Cek koneksi

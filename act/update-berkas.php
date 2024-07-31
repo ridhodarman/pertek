@@ -4,6 +4,7 @@ try {
 	$id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_POST['id']), ENT_QUOTES)));
 	$no_berkas = $_POST['no_berkas'];
 	$tahun = $_POST['tahun'];
+	$id_format = $_POST['id_format'];
 	$jenis_pertek = $_POST['jenis_pertek'];
 	$nama_pemohon = $_POST['nama_pemohon'];
 	$nik = $_POST['nik'];
@@ -98,6 +99,7 @@ try {
 	$query = "UPDATE berkas_pertek SET 
 				no_berkas=?,
 				tahun=?,
+				id_format=?,
 				jenis_pertek=?,
 				nama_pemohon=?,
 				nik=?,
@@ -191,9 +193,10 @@ try {
 				WHERE id=?";
 			$sql = $koneksi->prepare($query);
 			$sql->bind_param(
-				"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+				"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 				$no_berkas,
 				$tahun,
+				$id_format,
 				$jenis_pertek,
 				$nama_pemohon,
 				$nik,

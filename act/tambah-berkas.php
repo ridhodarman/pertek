@@ -27,7 +27,7 @@ if (isset($_POST['baru'])) {
 	    	header("location:../index.php?sukses=Berkas Nomor ".$no_berkas." berhasil dibuat");
 
 	    	//$query = "SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'berkas'";
-	    	$query = "SELECT max(id) FROM berkas";
+	    	$query = "SELECT max(id) FROM berkas_pertek";
 			$sql = $koneksi->prepare($query);
 			$sql->execute();
 			$data = $sql->get_result();
@@ -38,7 +38,7 @@ if (isset($_POST['baru'])) {
 				}
 				//$id=$id-1;
 
-		    	$query = "SELECT * FROM berkas WHERE id=?";
+		    	$query = "SELECT * FROM berkas_pertek WHERE id=?";
 				$sql = $koneksi->prepare($query);
 				$sql->bind_param("i", $id);
 				$sql->execute();

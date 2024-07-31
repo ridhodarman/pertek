@@ -28,6 +28,8 @@
     $ba_pengolahan_data = $row['ba_pengolahan_data'];
     $daftar_hadir_pengolahan_data = $row['daftar_hadir_pengolahan_data'];
     $surat_undangan_pembahasan_ptp = $row['surat_undangan_pembahasan_ptp'];
+    $ba_pembahasan_ptp = $row['ba_pembahasan_ptp'];
+    $daftar_hadir_pembahasan_ptp = $row['daftar_hadir_pembahasan_ptp'];
     $risalah = $row['risalah'];
     $surat_ptp = $row['surat_ptp'];
   }
@@ -146,7 +148,7 @@
 
 
             <div class="col-md-12 form-group">
-              <label> File Surat Keputusan (SK) </label>
+              <label> File Surat Keputusan (SK): </label>
               <?php
                 if ($file_sk) {
               ?> <a target="_blank" href="assets/format/<?php echo $file_sk; ?>">
@@ -601,6 +603,262 @@
             </div>
 
 
+            <div class="col-md-12 form-group">
+              <label>Format Surat Undangan Pembahasan PTP:</label>
+              <?php
+                if ($surat_undangan_pembahasan_ptp) {
+              ?>
+              <a href="assets/format/<?php echo $surat_undangan_pembahasan_ptp; ?>">
+                <button type="button" class="btn-sm btn-secondary">Unduh Format</button>
+              </a>
+              <?php
+                } else {
+              ?>
+              <font color="red">format belum di-upload</font> <?php
+                }
+              ?>
+              <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modalsuptp">Upload
+                Format Baru</button>
+              <!-- Modal -->
+              <div class="modal fade" id="modalsuptp" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload Format</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="act/format/update-suptp.php" method="post" role="form" class="php-email-form"
+                      enctype="multipart/form-data">
+                      <div class="modal-body">
+                        <div>
+                          <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
+                          <input type="hidden" name="no_sk" value="<?php echo $no_sk; ?>" />
+                          <label>Format Surat Undangan Pembahasan PTP</label>
+                          <p><small>upload dalam format *.rtf</small>
+                            <br /><small>file yang lama akan ditimpa</small>
+                          </p>
+                          <input type="file" class="form-control" name="file_suptp">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="kirim" type="submit" class="btn btn-primary">Simpan Format</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-12 form-group">
+              <label>Format Berita Acara Pembahasan PTP:</label>
+              <?php
+                if ($ba_pembahasan_ptp) {
+              ?>
+              <a href="assets/format/<?php echo $ba_pembahasan_ptp; ?>">
+                <button type="button" class="btn-sm btn-secondary">Unduh Format</button>
+              </a>
+              <?php
+                } else {
+              ?>
+              <font color="red">format belum di-upload</font> <?php
+                }
+              ?>
+              <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modalbaptp">Upload
+                Format Baru</button>
+              <!-- Modal -->
+              <div class="modal fade" id="modalbaptp" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload Format</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="act/format/update-baptp.php" method="post" role="form" class="php-email-form"
+                      enctype="multipart/form-data">
+                      <div class="modal-body">
+                        <div>
+                          <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
+                          <input type="hidden" name="no_sk" value="<?php echo $no_sk; ?>" />
+                          <label>Format Berita Acara Pembahasan PTP</label>
+                          <p><small>upload dalam format *.rtf</small>
+                            <br /><small>file yang lama akan ditimpa</small>
+                          </p>
+                          <input type="file" class="form-control" name="file_baptp">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="kirim" type="submit" class="btn btn-primary">Simpan Format</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-12 form-group">
+              <label>Format Daftar Hadir Rapat Pembahasan PTP:</label>
+              <?php
+                if ($daftar_hadir_pembahasan_ptp) {
+              ?>
+              <a href="assets/format/<?php echo $daftar_hadir_pembahasan_ptp; ?>">
+                <button type="button" class="btn-sm btn-secondary">Unduh Format</button>
+              </a>
+              <?php
+                } else {
+              ?>
+              <font color="red">format belum di-upload</font> <?php
+                }
+              ?>
+              <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modaldhptp">Upload
+                Format Baru</button>
+              <!-- Modal -->
+              <div class="modal fade" id="modaldhptp" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload Format</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="act/format/update-dhptp.php" method="post" role="form" class="php-email-form"
+                      enctype="multipart/form-data">
+                      <div class="modal-body">
+                        <div>
+                          <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
+                          <input type="hidden" name="no_sk" value="<?php echo $no_sk; ?>" />
+                          <label>Format Daftar Hadir Rapat Pembahasan PTP</label>
+                          <p><small>upload dalam format *.rtf</small>
+                            <br /><small>file yang lama akan ditimpa</small>
+                          </p>
+                          <input type="file" class="form-control" name="file_dhptp">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="kirim" type="submit" class="btn btn-primary">Simpan Format</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-12 form-group">
+              <label>Format Risalah PTP:</label>
+              <?php
+                if ($risalah) {
+              ?>
+              <a href="assets/format/<?php echo $risalah; ?>">
+                <button type="button" class="btn-sm btn-secondary">Unduh Format</button>
+              </a>
+              <?php
+                } else {
+              ?>
+              <font color="red">format belum di-upload</font> <?php
+                }
+              ?>
+              <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modalris">Upload
+                Format Baru</button>
+              <!-- Modal -->
+              <div class="modal fade" id="modalris" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload Format</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="act/format/update-risalah.php" method="post" role="form" class="php-email-form"
+                      enctype="multipart/form-data">
+                      <div class="modal-body">
+                        <div>
+                          <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
+                          <input type="hidden" name="no_sk" value="<?php echo $no_sk; ?>" />
+                          <label>Format Risalah PTP</label>
+                          <p><small>upload dalam format *.rtf</small>
+                            <br /><small>file yang lama akan ditimpa</small>
+                          </p>
+                          <input type="file" class="form-control" name="file_ris">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="kirim" type="submit" class="btn btn-primary">Simpan Format</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-12 form-group">
+              <label>Format Surat PTP:</label>
+              <?php
+                if ($surat_ptp) {
+              ?>
+              <a href="assets/format/<?php echo $surat_ptp; ?>">
+                <button type="button" class="btn-sm btn-secondary">Unduh Format</button>
+              </a>
+              <?php
+                } else {
+              ?>
+              <font color="red">format belum di-upload</font> <?php
+                }
+              ?>
+              <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modalsurat">Upload
+                Format Baru</button>
+              <!-- Modal -->
+              <div class="modal fade" id="modalsurat" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload Format</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="act/format/update-surat.php" method="post" role="form" class="php-email-form"
+                      enctype="multipart/form-data">
+                      <div class="modal-body">
+                        <div>
+                          <input type="hidden" name="id" value="<?php echo (base64_encode($id)); ?>" />
+                          <input type="hidden" name="no_sk" value="<?php echo $no_sk; ?>" />
+                          <label>Format Surat PTP</label>
+                          <p><small>upload dalam format *.rtf</small>
+                            <br /><small>file yang lama akan ditimpa</small>
+                          </p>
+                          <input type="file" class="form-control" name="file_surat">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="kirim" type="submit" class="btn btn-primary">Simpan Format</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
           </div> <!--tutup div untuk fade left!-->
           
         </div> <!-- tutup div row mt 5 -->
@@ -609,30 +867,11 @@
 
 
 
-      <div class="row mt-5">
-        <div class="col-md-4 form-group">
-          <label>Format Surat Undangan Pembahasan PTP:</label>
-          <input type="file" class="form-control" name="surat_undangan_pembahasan_ptp">
-        </div>
-        <div class="col-md-4 form-group">
-          <label>Format Berita Acara Pembahasan PTP:</label>
-          <input type="file" class="form-control" name="ba_pembahasan_ptp">
-        </div>
-        <div class="col-md-4 form-group">
-          <label>Format Daftar Rapat Pembahasan PTP:</label>
-          <input type="file" class="form-control" name="daftar_hadir_pembahasan_ptp">
-        </div>
-      </div>
+
 
       <div class="row mt-5">
-        <div class="col-md-6 form-group">
-          <label>Format Risalah PTP:</label>
-          <input type="file" class="form-control" name="risalah">
-        </div>
-        <div class="col-md-6 form-group">
-          <label>Format Surat Keluar PTP:</label>
-          <input type="file" class="form-control" name="surat_ptp">
-        </div>
+
+        
       </div>
 
       <div class="row mt-5">

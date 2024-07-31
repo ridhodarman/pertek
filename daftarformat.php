@@ -8,6 +8,20 @@
 <body>
 
   <?php include 'inc/header.php';?>
+  <script type="text/javascript">
+    <?php
+    if (isset($_GET['sukses'])) {
+      $pesan = $_GET['sukses'];
+      echo '
+      Swal.fire({
+        title: "Success",
+        text: "' . $pesan . '",
+        icon: "success"
+      });
+      ';
+    }
+    ?>
+  </script>
 
   <main id="main">
 
@@ -26,15 +40,19 @@
           <li><a href="index.php">Home</a></li>
           <li>Daftar Format</li>
         </ol>
+        <div class="d-flex justify-content-center">
+          <a href="inputformat.php">
+            <button type="button" class="btn btn-outline-primary">Tambah Format Baru</button>
+          </a>
+        </div>
       </div>
     </section><!-- End Breadcrumbs -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="about ">
-      <div class="container">
-
+      <div class="container mt-5">
+      
         <div class="row">
-          
           <div class="col-lg-12 pt-3 pt-lg-0 content">
             <table class="table table-bordered">
               <thead>
@@ -82,10 +100,14 @@
                       <td><?php echo $no++; ?></td>
                       <td><?php echo $no_sk; ?></td>
                       <td><?php echo $tanggal_sk; ?></td>
-                      <td><?php echo $file_sk; ?></td>
+                      <td>
+                        <a target="_blank" href="assets/format/<?php echo $file_sk; ?>">
+                          <?php echo $file_sk; ?>
+                        </a>
+                      </td>
                       <td>
                         <a href="editformat.php?format=<?php echo base64_encode($id) ?>">
-                          <button type="button" class="btn btn-outline-primary btn-sm">Detail</button>
+                          <button type="button" class="btn btn-outline-info btn-sm">Detail</button>
                       </td>
                       </a>
                     </tr>

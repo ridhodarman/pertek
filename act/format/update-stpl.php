@@ -3,6 +3,7 @@ include '../../inc/koneksi.php';
 $id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_POST['id']), ENT_QUOTES)));
 $file_stpl = $_POST['file_stpl'];
 $no_sk = $_POST['no_sk'];
+$no_sk = preg_replace("/[^a-zA-Z0-9]/", "", $no_sk);
 $query = "SELECT st_pl  FROM format_pertek WHERE id=?";
 $sql = $koneksi->prepare($query);
 $sql->bind_param("i", $id);

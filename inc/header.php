@@ -29,10 +29,10 @@
         <li><a href="#">Services</a></li>
         <li><a href="#">Pricing</a></li>
         <li><a href="#">Portfolio</a></li>
-        <li><a href="inputformat.php">Blog</a></li>
+        <li><a href="daftarformat.php">Format</a></li>
         <li><a href="rekap.php" id="rekap">Rekap</a></li>
 
-        <li><a class="getstarted" href="about.html">Get Started</a></li>
+        <li><a class="getstarted" href="#">Get Started</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

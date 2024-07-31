@@ -215,8 +215,31 @@
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label>Format (SK Pertek):</label>
-                  <select class="form-control">
-                    <option value="Tidak Ada">Nomor: SK../.../2023</option>
+                  <select class="form-control" name="id_format">
+                    <?php
+                      $query = "SELECT id, no_sk, tanggal_sk, file_sk FROM format_pertek ORDER BY tanggal_sk DESC";
+                      $sql = $koneksi->prepare($query);
+                      $sql->execute();
+                      $data = $sql->get_result();
+                      if ($data->num_rows > 0) {
+                        while ($row = $data->fetch_assoc()) {
+                          $id = $row['id'];
+                          $no_sk = $row['no_sk'];
+                          $tanggal_sk = $row['tanggal_sk'];
+                          if ($tanggal_sk==true && $tanggal_sk!="0000-00-00"){
+                            $timestamp = strtotime($tanggal_sk);
+                            $tanggal_sk = $new_date = date('d-m-Y', $timestamp);
+                          }
+                          $file_sk = $row['file_sk'];
+                      ?>
+                        <option value="<?php echo $id; ?>"><?php echo $no_sk; ?> tanggal <?php echo $tanggal_sk; ?></option>
+                        <?php }
+                      } else { ?>
+                        <tr>
+                        <option value="null">Format tidak ada</option>
+                        </tr>
+                      <?php } ?>
+                    ?>
                   </select>
                 </div>
               </div>
