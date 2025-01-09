@@ -1,7 +1,84 @@
 <?php
+//include_once("../inc/koneksi.php");
+
 function cetakberkas($namafile){
     include 'update-berkas.php';
-    $document = file_get_contents("../assets/format/$namafile.rtf");
+    $id_format = null;
+    $query = "SELECT id_format FROM berkas_pertek WHERE id=?";
+    $sql = $koneksi->prepare($query);
+    $sql->bind_param("i", $id);
+    $sql->execute();
+    $data = $sql->get_result();
+    while ($row = $data->fetch_assoc()) {
+      $id_format = $row['id_format'];
+    }
+    //echo $id_format;
+
+    if ($id_format){
+        $namafile2 = null;
+        if ($namafile=="rapat persiapan-und"){
+            $query = "SELECT surat_undangan_rapat_persiapan AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="rapat persiapan-dh"){
+            $query = "SELECT daftar_hadir_rapat_persiapan AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="rapat-persiapan-notulen"){
+            $query = "SELECT notulensi_rapat_persiapan AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="peninjauan-lapang-st"){
+            $query = "SELECT st_pl AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="peninjauan-lapang-ba"){
+            $query = "SELECT ba_pl AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="pengolahan-data-st"){
+            $query = "SELECT st_pengolahan_data AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="pengolahan-data-ba"){
+            $query = "SELECT ba_pengolahan_data AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="pengolahan-data-dh"){
+            $query = "SELECT daftar_hadir_pengolahan_data AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="rapat-pembahasan-und"){
+            $query = "SELECT surat_undangan_pembahasan_ptp AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="rapat-pembahasan-ba"){
+            $query = "SELECT ba_pembahasan_ptp AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="rapat-pembahasan-dh"){
+            $query = "SELECT daftar_hadir_pembahasan_ptp AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="risalah"){
+            $query = "SELECT risalah AS file FROM format_pertek WHERE id=?";
+        }
+        else if($namafile=="surat_pertek"){
+            $query = "SELECT surat_ptp AS file FROM format_pertek WHERE id=?";
+        }
+        $sql = $koneksi->prepare($query);
+        $sql->bind_param("i", $id_format);
+        $sql->execute();
+        $data = $sql->get_result();
+        while ($row = $data->fetch_assoc()) {
+          $namafile2 = $row['file'];
+        }
+        //echo "<br/>";
+        //echo $namafile;
+
+        if ($namafile2) {
+            $document = file_get_contents("../assets/format/$namafile2");    
+        }
+        else {
+            $document = file_get_contents("../assets/format/$namafile.rtf");
+        }
+        
+    }
+
+    else {
+        $document = file_get_contents("../assets/format/$namafile.rtf");
+    }
+    
+    
     include '../inc/proses-word.php';
     header("Content-type: application/msword");
     $file=$no_berkas.$namafile;
@@ -61,6 +138,6 @@ try {
     }
 } 
 catch (exception $e) {
-	header("location:../assets/error");
+    header("location:../assets/error");
 }
 ?>

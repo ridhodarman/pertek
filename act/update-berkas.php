@@ -95,6 +95,7 @@ try {
 	$tanggal_risalah = $_POST['tanggal_risalah'];
 	$no_surat_pertek = $_POST['no_surat_pertek'];
 	$tanggal_surat_pertek = $_POST['tanggal_surat_pertek'];
+	$id_format = $_POST['id_format'];
 
 	$query = "UPDATE berkas_pertek SET 
 				no_berkas=?,
@@ -189,11 +190,12 @@ try {
 				no_risalah=?,
 				tanggal_risalah=?,
 				no_surat_pertek=?,
-				tanggal_surat_pertek=?
+				tanggal_surat_pertek=?,
+				id_format=?
 				WHERE id=?";
 			$sql = $koneksi->prepare($query);
 			$sql->bind_param(
-				"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+				"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 				$no_berkas,
 				$tahun,
 				$id_format,
@@ -287,6 +289,7 @@ try {
 				$tanggal_risalah,
 				$no_surat_pertek,
 				$tanggal_surat_pertek,
+				$id_format,
 				$id
 			);
 	if ($sql->execute()) {

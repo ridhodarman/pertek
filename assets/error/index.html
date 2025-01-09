@@ -2,32 +2,38 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Ondeh Mande..</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>ERROR !</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<header class="header">
-        <div class="header__logo">
-            <!-- <img src="https://i.ibb.co/njBXyTk/logo.png"> -->
-        </div>
-        <div class="header__menu">
-            <ul>
-                <a href="#"><li>Ondeh mandee</li></a>
-            </ul>
-          <span class="hamburger__menu">☰</span>
-        </div>
-    </header>
-    <section class="errorPage">
-        <div class="errorPage__text">
-            <h3>Error!</h3>
-            <p style="color: white; background-color: rgba(0,0,0,0.33); font-size: 150%; text-align: center;"><strong>Telah terjadi kesalahan pada aplikasi. Mohon maaf ambo manusia juo yang tidak luput dari kesalahan. Atas perhatian dan kerjasamanya diucapkan tarimo kasih.</strong></p>
-            <a href="../../"><span class="errorPage__button">Kembali ke halaman awal</span></a>
-        </div>
-        <span class="errorPage__templeweed-container"><img src="https://i.ibb.co/mTg87G2/tembleweed.png" class="errorPage__tembleweed"></span>
-        <div class="errorPage__terrain"></div>
-    </section>
+<main class="container">
+  <div class="container__left venn" role="img" aria-label="404 Venn Diagram">
+    <div class="venn__bubble venn__bubble--left" aria-hidden="true"></div>
+    <div class="venn__bubble venn__bubble--right" aria-hidden="true"></div>
+    <p class="venn__text venn__text--left" aria-describedby="venn-left">We broke Something</p>
+    <p class="venn__text venn__text--center" aria-describedby="venn-center">404</p>
+    <p class="venn__text venn__text--right" aria-describedby="venn-right">You cannot type</p>
+    <span id="venn-left" class="sr-only">Left side of venn diagram</span>
+    <span id="venn-center" class="sr-only">Intersect side of venn diagram</span>
+    <span id="venn-right" class="sr-only">Right side of venn diagram</span>
+  </div>
+  <div class="container__right desc">
+    <h1 class="desc__head">E R R O R  ...</h1>
+    <div class="desc__body" style="color: black">
+      <p>Asai lah.., aplikasinyo error...</p>
+      <br/>
+      <p>Berikut tindakan yang dapat bro lakukan:</p>
+      <ul>
+        <li>Lapor programer</li>
+        <li>Atau</li>
+        <li><a href="../../">Kembali ke halaman awal </a> </li>
+      </ul>
+    </div>
+  </div>
+</main>
 <!-- partial -->
   <script  src="./script.js"></script>
 

@@ -10,7 +10,8 @@
 
   <main id="main">
     <?php
-    include 'inc/koneksi.php';
+    //include 'inc/koneksi.php';
+    require_once('inc/koneksi.php');
     $id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_GET['berkas']), ENT_QUOTES)));
 
     $query = "SELECT * FROM berkas_pertek WHERE id=?";
