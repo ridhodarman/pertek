@@ -1,7 +1,7 @@
 <?php
 include '../../inc/koneksi.php';
 $id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_POST['id']), ENT_QUOTES)));
-$file_dhrp = $_POST['file_dhrp'];
+//$file_dhrp = $_POST['file_dhrp'];
 $no_sk = $_POST['no_sk'];
 $no_sk = preg_replace("/[^a-zA-Z0-9]/", "", $no_sk);
 $query = "SELECT daftar_hadir_rapat_persiapan  FROM format_pertek WHERE id=?";
@@ -10,7 +10,7 @@ $sql->bind_param("i", $id);
 $sql->execute();
 $data = $sql->get_result();
 while ($row = $data->fetch_assoc()) {
-  $file_dhrp = $row['file_dhrp'];
+  $file_dhrp = $row['daftar_hadir_rapat_persiapan'];
 }
 
 $rand = rand(10,999);

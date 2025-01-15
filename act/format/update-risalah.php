@@ -1,7 +1,7 @@
 <?php
 include '../../inc/koneksi.php';
 $id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_POST['id']), ENT_QUOTES)));
-$file_ris = $_POST['file_ris'];
+//$file_ris = $_POST['file_ris'];
 $no_sk = $_POST['no_sk'];
 $no_sk = preg_replace("/[^a-zA-Z0-9]/", "", $no_sk);
 $query = "SELECT risalah FROM format_pertek WHERE id=?";
@@ -10,7 +10,7 @@ $sql->bind_param("i", $id);
 $sql->execute();
 $data = $sql->get_result();
 while ($row = $data->fetch_assoc()) {
-  $file_ris = $row['file_ris'];
+  $file_ris2 = $row['risalah'];
 }
 
 $rand = rand(10,999);
@@ -22,11 +22,12 @@ if(!in_array($ext,$ekstensi) ) {
 	header("location:../../editformat.php?format=".$_POST['id']."&gagal=Gagal input data, File risalah harus dalam format rtf");
 }
 else {
-	$file="../../assets/format/".$file_ris;
+	$file="../../assets/format/".$file_ris2;
 	if ($file){
 		if (!unlink($file))
 		{
 		echo ("gagal menghapus file $file");
+		//return "gagal";
 		}
 	}
 

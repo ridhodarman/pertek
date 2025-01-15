@@ -2,88 +2,16 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Pertek Seksi 3</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Serenity
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/serenity-bootstrap-corporate-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <?php include 'inc/head.php';?>
 </head>
 
 <body>
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <div class="logo">
-        <h1 class="text-light"><a href="index.php">Seksi 3</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="active" href="index.php">Home</a></li>
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="about.html">About</a></li>
-              <li><a href="team.html">Team</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="rekap.php">Rekap</a></li>
-
-          <li><a class="getstarted" href="about.html">Get Started</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
+  <?php include 'inc/header.php';?>
 
   <main id="main">
     <div style="padding: 20px; text-align: center;">
-      menampilkan hasil pencarian:
+      menampilkan hasil pencarian dari:
       <strong><?php echo $_GET['cari']; ?></strong>
     </div>
     <!-- ======= About Section ======= -->
@@ -97,7 +25,7 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">No. Berkas</th>
+                  <th scope="col">No. Berkas/Tahun</th>
                   <th scope="col">Pemohon</th>
                   <th scope="col">Lokasi</th>
                   <th scope="col">Action</th>
@@ -114,9 +42,9 @@
 
                 include 'inc/koneksi.php';
 
-                $data = mysqli_query($koneksi, "select id from berkas_pertek");
-                $jumlah_data = mysqli_num_rows($data);
-                $total_halaman = ceil($jumlah_data / $batas);
+                //$data = mysqli_query($koneksi, "select id from berkas_pertek");
+                $jumlah_data = 0;
+                $total_halaman = 0;
                 $cari = $_GET['cari'];
                 // $query = "SELECT id, no_berkas, nama_pemohon, bertindak_atas_nama, desa_nagari, kecamatan, luas, tahun
                 //           FROM berkas
@@ -125,15 +53,21 @@
                 // $sql = $koneksi->prepare($query);
                 // $sql->bind_param("sssss", $cari, $cari, $cari, $halaman_awal, $batas);
                 $query = "SELECT id, no_berkas, nama_pemohon, bertindak_atas_nama, desa_nagari, kecamatan, luas, tahun
-                          FROM berkas
-                          WHERE nama_pemohon LIKE ? OR bertindak_atas_nama LIKE ? OR no_berkas LIKE ?
+                          FROM berkas_pertek
+                          WHERE LOWER(nama_pemohon) LIKE ? 
+                            OR LOWER(bertindak_atas_nama) LIKE ? 
+                            OR LOWER(no_berkas) LIKE ?
+                            OR LOWER(desa_nagari) LIKE ?
                           ORDER BY waktu_entri DESC limit ?, ?";
                 $sql = $koneksi->prepare($query);
-                $cari = "%".$cari."%";
-                $sql->bind_param("sssss", $cari, $cari, $cari, $halaman_awal, $batas);
+                $cari2 = "%".strtolower($cari)."%";
+                $sql->bind_param("ssssss", $cari2, $cari2, $cari2, $cari2, $halaman_awal, $batas);
                 $sql->execute();
                 $data = $sql->get_result();
                 $no = $halaman_awal + 1;
+
+                $jumlah_data = mysqli_num_rows($data);
+                $total_halaman = ceil($jumlah_data / $batas);
 
                 if ($data->num_rows > 0) {
                   while ($row = $data->fetch_assoc()) {
@@ -143,7 +77,6 @@
                     $nama_pemohon = $row['nama_pemohon'];
                     $nagari = $row['desa_nagari'];
                     $kecamatan = $row['kecamatan'];
-                    $kecamatan = $row['luas'];
                 ?>
                     <tr>
                       <td><?php echo $no++; ?></td>
@@ -164,17 +97,18 @@
                 <?php } ?>
               </tbody>
             </table>
+            Total Hasil Pencarian = <?php echo $jumlah_data ?>
             <nav>
               <ul class="pagination justify-content-center">
                 <li class="page-item">
                   <a class="page-link" <?php if ($halaman > 1) {
-                                          echo "href='?halaman=$previous'";
+                                          echo "href='?cari=".$cari."&halaman=$previous'";
                                         } ?>>Previous</a>
                 </li>
                 <?php
                 for ($x = 1; $x <= $total_halaman; $x++) {
                 ?>
-                  <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                  <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>&cari=<?php echo $cari ?>"><?php echo $x; ?></a></li>
                 <?php
                 }
                 ?>
@@ -186,12 +120,21 @@
               </ul>
             </nav>
           </div>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder=" cari salah satu saja, misalnyo: nomor berkas se, namo pemohon, bertindak atas nama, dll" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2">@example.com</span>
-            </div>
+          
+          <div class="col-md-12" style="text-align: center;">
+            <br/>
+            Pencarian Berkas:
+            <form action="pencarian.php" method="GET" role="form">
+              <div class="input-group mb-6">
+                <input type="text" name="cari" class="form-control" placeholder=" cari salah satu saja, misalnyo: nomor berkas se (ndak pakai tahun), namo pemohon, bertindak atas nama, dll" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button type="submit" class="input-group-text" id="basic-addon2">
+                    <i class="fa fa-magnifying-glass"></i> &nbsp; Cari Berkas</button>
+                </div>
+              </div>
+            </form>
           </div>
+
         </div>
 
       </div>

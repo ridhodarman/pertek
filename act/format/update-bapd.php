@@ -1,7 +1,7 @@
 <?php
 include '../../inc/koneksi.php';
 $id = stripslashes(strip_tags(htmlspecialchars(base64_decode($_POST['id']), ENT_QUOTES)));
-$file_bapd = $_POST['file_bapd'];
+//$file_bapd = $_POST['file_bapd'];
 $no_sk = $_POST['no_sk'];
 $no_sk = preg_replace("/[^a-zA-Z0-9]/", "", $no_sk);
 $query = "SELECT ba_pengolahan_data  FROM format_pertek WHERE id=?";
@@ -10,7 +10,7 @@ $sql->bind_param("i", $id);
 $sql->execute();
 $data = $sql->get_result();
 while ($row = $data->fetch_assoc()) {
-  $file_bapd = $row['file_bapd'];
+  $file_bapd = $row['ba_pengolahan_data'];
 }
 
 $rand = rand(10,999);
@@ -23,11 +23,12 @@ if(!in_array($ext,$ekstensi) ) {
 }
 else {
 	$file="../../assets/format/".$file_bapd;
-	if ($file){
-		if (!unlink($file))
+	if (!unlink($file))
 		{
 		echo ("gagal menghapus file $file");
 		}
+		else {
+			unlink($file);
 	}
 
 	$file_bapd = "_pengolahan data-ba___".$no_sk."___".$rand.'.rtf';

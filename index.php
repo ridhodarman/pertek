@@ -153,11 +153,18 @@
               </ul>
             </nav>
           </div>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder=" cari salah satu saja, misalnyo: nomor berkas se, namo pemohon, bertindak atas nama, dll" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2">@example.com</span>
-            </div>
+          <div class="col-md-12" style="text-align: center;">
+            <br/>
+            Pencarian Berkas:
+            <form action="pencarian.php" method="GET" role="form">
+              <div class="input-group mb-6">
+                <input type="text" name="cari" class="form-control" placeholder=" cari salah satu saja, misalnyo: nomor berkas se (ndak pakai tahun), namo pemohon, bertindak atas nama, dll" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button type="submit" class="input-group-text" id="basic-addon2">
+                    <i class="fa fa-magnifying-glass"></i> &nbsp; Cari Berkas</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
 
